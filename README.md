@@ -1,5 +1,5 @@
 # Mesh Navigation Tutorials
-Placeholder repository for a potential ROSCon 2024 talk.
+Placeholder repository for a potential [ROSCon 2024](https://roscon.ros.org/2024/) talk.
 
 Here, we will release tutorials that provide a entrypoints for new users interested in 3D navigation on meshes.
 Besides documentation, it includes a range of real-world and artificial environments that are ready to use: Complete with simulation, launch files, and configuration files.
