@@ -13,5 +13,5 @@ Besides documentation, it includes a range of real-world and artificial environm
 - [Mesh Tools](https://github.com/naturerobots/mesh_tools) ([RAS 2021 paper](https://doi.org/10.1016/j.robot.2020.103688))
 - [Mesh Navigation](https://github.com/naturerobots/mesh_navigation) ([ICRA 2021 paper for Continuous Vector Field Planner, CVP](https://doi.org/10.1109/ICRA48506.2021.9560981))
 - [MICP-L](https://github.com/uos/rmcl) ([paper on arxiv](https://arxiv.org/abs/2210.13904))
-- [Rmagine](https://github.com/uos/rmagine) ([ICRA 2022 paper](https://doi.org/10.1109/ICRA48891.2023.10161388))
+- [Rmagine](https://github.com/uos/rmagine) ([ICRA 2023 paper](https://doi.org/10.1109/ICRA48891.2023.10161388))
 - [RMCL](https://github.com/uos/rmcl)
