@@ -1,0 +1,62 @@
+- topic_name: "/clock"
+  ros_type_name: "rosgraph_msgs/msg/Clock"
+  gz_type_name: "ignition.msgs.Clock"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/odom"
+  gz_topic_name: "model/robot/odometry"
+  ros_type_name: "nav_msgs/msg/Odometry"
+  gz_type_name: "ignition.msgs.Odometry"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/imu/data"
+  ros_type_name: "sensor_msgs/msg/Imu"
+  gz_topic_name: "/model/robot/imu"
+  gz_type_name: "ignition.msgs.IMU"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/scan"
+  ros_type_name: "sensor_msgs/msg/LaserScan"
+  gz_topic_name: "/model/robot/scan"
+  gz_type_name: "ignition.msgs.LaserScan"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/cloud"
+  ros_type_name: "sensor_msgs/msg/PointCloud2"
+  gz_topic_name: "/model/robot/cloud/points"
+  gz_type_name: "ignition.msgs.PointCloudPacked"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/joint_states"
+  ros_type_name: "sensor_msgs/msg/JointState"
+  gz_topic_name: "/model/robot/joint_states"
+  gz_type_name: "ignition.msgs.Model"
+  direction: GZ_TO_ROS
+
+# Teleop nodes need 'Twist'
+# - ros_topic_name: "/cmd_vel"
+#   ros_type_name: "geometry_msgs/msg/Twist"
+#   gz_topic_name: "/model/robot/cmd_vel"
+#   gz_type_name: "ignition.msgs.Twist"
+#   direction: ROS_TO_GZ
+
+# Mesh Nav publishes 'TwistStamped'
+- ros_topic_name: "/cmd_vel"
+  ros_type_name: "geometry_msgs/msg/TwistStamped"
+  gz_topic_name: "/model/robot/cmd_vel"
+  gz_type_name: "ignition.msgs.Twist"
+  direction: ROS_TO_GZ
+
+# GT Poses
+- ros_topic_name: "/tf_gt"
+  gz_topic_name: "model/robot/pose_static"
+  ros_type_name: "tf2_msgs/msg/TFMessage"
+  gz_type_name: "gz.msgs.Pose_V"
+  direction: GZ_TO_ROS
+
+# DiffDrive Odom TF
+- ros_topic_name: "/tf_odom"
+  gz_topic_name: "model/robot/tf_odom"
+  ros_type_name: "tf2_msgs/msg/TFMessage"
+  gz_type_name: "gz.msgs.Pose_V"
+  direction: GZ_TO_ROS
