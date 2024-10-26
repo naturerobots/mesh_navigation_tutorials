@@ -29,11 +29,13 @@ With the hand-modelled examples we particularly aim to support low-end computers
 
 ## Requirements and Installation
 
-* A working ROS 2 installation (we target `humble` at the moment).
-* The tutorial's ROS 2 dependencies
+* You need a working ROS 2 installation. We target `humble` at the moment.
+* Go into a ROS 2 workspace's source directory `cd $YOUR_ROS_WS/src`.
+* Clone the tutorial code `git clone git@github.com:naturerobots/mesh_navigation_tutorials.git`
+* Get the tutorial's ROS 2 dependencies
   * Clone source dependencies: Run `vcs import --input mesh_navigation_tutorials/source_dependencies.yaml` in your ROS 2 workspace source directory.
   * Get packaged dependencies: Run `rosdep install --from-paths . --ignore-src -r -y` from within your ROS 2 workspace source directory.
-* Build via `colcon build --packages-up-to mesh_navigation_tutorials`, from within your ROS 2 workspace root directory.
+* Build: Go to workspace root `cd $YOUR_ROS_WS` and run `colcon build --packages-up-to mesh_navigation_tutorials`.
 
 ## Run the Examples
 
