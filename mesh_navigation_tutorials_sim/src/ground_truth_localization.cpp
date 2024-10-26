@@ -19,15 +19,14 @@
 #include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
 
 
-
 namespace mesh_navigation_tutorials_sim
 {
 
 class GroundTruthLocalizationNode : public rclcpp::Node
 {
 public:
-  explicit GroundTruthLocalizationNode(const rclcpp::NodeOptions& options = rclcpp::NodeOptions())
-  :rclcpp::Node("ground_truth_localization_node", options)
+  explicit GroundTruthLocalizationNode(const rclcpp::NodeOptions & options = rclcpp::NodeOptions())
+  : rclcpp::Node("ground_truth_localization_node", options)
   {
     std::cout << "GroundTruthLocalizationNode" << std::endl;
 
@@ -54,25 +53,22 @@ public:
 
     // subscribe to tf messages coming from gazebo
     sub_tf_ = this->create_subscription<tf2_msgs::msg::TFMessage>(
-      "/tf_gt", 10, 
-      [=](const tf2_msgs::msg::TFMessage::ConstSharedPtr& msgs) -> void
-      { 
-        tf_cb(msgs); 
+      "/tf_gt", 10,
+      [ = ](const tf2_msgs::msg::TFMessage::ConstSharedPtr & msgs) -> void
+      {
+        tf_cb(msgs);
       });
 
-    std::cout << "Searching for Gazebo Transform " << gz_child_frame_ << " -> " << gz_parent_frame_ << std::endl;
+    std::cout << "Searching for Gazebo Transform " << gz_child_frame_ << " -> " <<
+      gz_parent_frame_ << std::endl;
   }
 
-  void tf_cb(const tf2_msgs::msg::TFMessage::ConstSharedPtr& msgs)
+  void tf_cb(const tf2_msgs::msg::TFMessage::ConstSharedPtr & msgs)
   {
-    for(geometry_msgs::msg::TransformStamped Tbm : msgs->transforms)
-    {
-      if(Tbm.header.frame_id == gz_parent_frame_)
-      {
-        if(Tbm.child_frame_id == gz_child_frame_)
-        {
-          if(skip_odom_frame_)
-          {
+    for (geometry_msgs::msg::TransformStamped Tbm : msgs->transforms) {
+      if (Tbm.header.frame_id == gz_parent_frame_) {
+        if (Tbm.child_frame_id == gz_child_frame_) {
+          if (skip_odom_frame_) {
             // plan:
             // get last tf from base_footprint -> odom
             geometry_msgs::msg::TransformStamped Tbo;
@@ -95,7 +91,7 @@ public:
             Tom.header.frame_id = ros_parent_frame_;
             Tom.header.stamp = Tbo.header.stamp; // what time to use? I think it should be the odom time since we are correcting it
             Tom.child_frame_id = ros_odom_frame_;
-            
+
             tf2::Transform Tbm_tf;
             tf2::fromMsg(Tbm.transform, Tbm_tf);
 
