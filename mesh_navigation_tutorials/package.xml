@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>mesh_navigation_tutorials</name>
+  <version>0.0.1</version>
+  <description>Tutorials for mobile robot navigation in 3D, using mesh maps.</description>
+  
+  <maintainer email="matthias.holoch@naturerobots.com">Matthias Holoch</maintainer>
+  <maintainer email="amock@uos.de">Alexander Mock</maintainer>
+
+  <license>BSD-3-Clause</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <exec_depend>cvp_mesh_planner</exec_depend>
+  <exec_depend>mbf_mesh_nav</exec_depend>
+  <exec_depend>mesh_controller</exec_depend>
+  <exec_depend>mesh_layers</exec_depend>
+  <exec_depend>mesh_map</exec_depend>
+  <exec_depend>mesh_navigation_tutorials_sim</exec_depend>
+  <exec_depend>robot_localization</exec_depend>
+  <exec_depend>rviz_mbf_plugins</exec_depend>
+  <exec_depend>rviz_mesh_tools_plugins</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <!--<test_depend>ament_cmake_copyright</test_depend> TODO: add copyright headers -->
+  <test_depend>ament_cmake_cppcheck</test_depend>
+  <test_depend>ament_cmake_cpplint</test_depend>
+  <test_depend>ament_cmake_flake8</test_depend>
+  <test_depend>ament_cmake_pep257</test_depend>
+  <test_depend>ament_cmake_uncrustify</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+<model name="floor_is_lava">
+  <static>true</static>
+  <link name="link">
+    <collision name="collision">
+      <geometry>
+        <mesh>
+          <scale>1 1 1</scale>
+          <uri>meshes/floor_is_lava.dae</uri>
+        </mesh>
+      </geometry>
+    </collision>
+    <visual name="visual">
+      <geometry>
+        <mesh>
+          <scale>1 1 1</scale>
+          <uri>meshes/floor_is_lava.dae</uri>
+        </mesh>
+      </geometry>
+    </visual>
+  </link>
+</model>
+</sdf>
