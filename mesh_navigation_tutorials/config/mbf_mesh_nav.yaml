@@ -30,7 +30,13 @@ move_base_flex:
     cmd_vel_ignored_tolerance: 10.0
 
     mesh_map:
-      mesh_part: 'mesh'
+      mesh_file: '/home/amock/mesh_nav_ws/src/mesh_navigation_tutorials/mesh_navigation_tutorials/maps/parking_garage.ply'
+      mesh_part: '/'
+      
+      mesh_working_file: 'parking_garage.h5'
+      mesh_working_part: 'mesh'
+
+      hem: pmp # pmp (default), lvr
 
       layers: ['border', 'height_diff', 'roughness', 'inflation']
 
@@ -53,8 +59,8 @@ move_base_flex:
       inflation:
         type: 'mesh_layers/InflationLayer'
         factor: 1.0
-        inflation_radius: 0.4
-        inscribed_radius: 0.2
+        inflation_radius: 0.2
+        inscribed_radius: 0.4
         lethal_value: 1.0
         inscribed_value: 0.8
         repulsive_field: false

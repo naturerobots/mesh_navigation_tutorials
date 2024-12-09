@@ -60,8 +60,10 @@ def generate_launch_description():
         ],
         parameters=[
             mbf_mesh_nav_config,
-            {"mesh_map.mesh_file": mesh_map_path},
+            # {"mesh_map.mesh_file": mesh_map_path},
         ],
+        arguments=['--ros-args', '--log-level', ['move_base_flex:=', 'DEBUG']],
+        prefix=['xterm -e gdb --args']
     )
 
     return LaunchDescription(
