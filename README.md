@@ -7,7 +7,7 @@ Mesh Navigation Tutorials
 <div align="center">
   <a href="https://github.com/naturerobots/mesh_navigation">Mesh Navigation</a>
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
-  <a href="https://github.com/naturerobots/mesh_navigation_tutorials/wiki">Documentation</a>
+  <a href="https://naturerobots.github.io/mesh_navigation_docs/tutorials">Documentation</a>
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
   <a href="https://www.youtube.com/@nature-robots">Videos</a>
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
