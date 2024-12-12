@@ -30,12 +30,14 @@ move_base_flex:
     cmd_vel_ignored_tolerance: 10.0
 
     mesh_map:
-      mesh_file: '/home/amock/mesh_nav_ws/src/mesh_navigation_tutorials/mesh_navigation_tutorials/maps/parking_garage.ply'
+      # input
+      # mesh_file: '/home/amock/mesh_nav_ws/src/mesh_navigation_tutorials/mesh_navigation_tutorials/maps/parking_garage.ply'
       mesh_part: '/'
-      
-      mesh_working_file: 'parking_garage.h5'
+      # storage
+      # mesh_working_file: 'parking_garage.h5'
       mesh_working_part: 'mesh'
 
+      # half-edge-mesh implementation
       hem: pmp # pmp (default), lvr
 
       layers: ['border', 'height_diff', 'roughness', 'inflation']

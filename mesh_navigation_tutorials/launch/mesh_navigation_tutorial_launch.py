@@ -165,9 +165,10 @@ def generate_launch_description():
                 [
                     pkg_mesh_navigation_tutorials,
                     "maps",
-                    PythonExpression(['"', map_name, '" + ".h5"']),
+                    PythonExpression(['"', map_name, '" + ".ply"']),
                 ]
             ),
+            "mesh_map_working_path": PythonExpression(['"', map_name, '" + ".h5"'])
         }.items(),
     )
 
