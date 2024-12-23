@@ -168,10 +168,10 @@ def generate_launch_description():
                 [
                     pkg_mesh_navigation_tutorials,
                     "maps",
-                    PythonExpression(['"', map_name, mesh_nav_map_ext, '"']), # loading a map from here
+                    PythonExpression(['"', map_name, mesh_nav_map_ext, '"']),
                 ]
             ),
-            "mesh_map_working_path": PythonExpression(['"', map_name, '" + ".h5"']) # working on a local copy (as HDF5 format)
+            "mesh_map_working_path": PythonExpression(['"', map_name, '" + ".h5"'])
         }.items(),
     )
 
