@@ -52,9 +52,9 @@ def generate_launch_description():
 
     # Launch arguments
     available_map_names = [
-        f[:-3]
+        f[:-4]
         for f in os.listdir(os.path.join(pkg_mesh_navigation_tutorials, "maps"))
-        if f.endswith(".h5")
+        if f.endswith(".dae")
     ]
 
     launch_args = [

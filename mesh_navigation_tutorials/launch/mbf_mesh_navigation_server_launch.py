@@ -42,11 +42,11 @@ def generate_launch_description():
     launch_args = [
         DeclareLaunchArgument(
             "mesh_map_path",
-            description="Path to the mesh file that defines the map.",
+            description="Path to the mesh file that defines the map. Allowed formats are our internal HDF5 format and all standard mesh formats loadable by Assimp.",
         ),
         DeclareLaunchArgument(
             "mesh_map_working_path",
-            description="Path to the mesh file that defines the map.",
+            description="Path to the mesh file used by the mesh navigation to store costs during operation. Only HDF5 formats are permitted.",
         ),
     ]
     mesh_map_path = LaunchConfiguration("mesh_map_path")
@@ -69,9 +69,7 @@ def generate_launch_description():
                 "mesh_map.mesh_file": mesh_map_path,
                 "mesh_map.mesh_working_file": mesh_map_working_path
             }
-        ],
-        # arguments=['--ros-args', '--log-level', ['move_base_flex:=', 'DEBUG']],
-        # prefix=['xterm -e gdb --args']
+        ]
     )
 
     return LaunchDescription(
