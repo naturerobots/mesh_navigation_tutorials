@@ -50,13 +50,16 @@ def generate_launch_description():
     # Comment Alex: One can have different maps for same worlds
     # Is this to much choice for a tutorial?
 
-    # Launch arguments
+    # Loading a map files with the following extension
+    mesh_nav_map_ext = ".ply"
+
     available_map_names = [
-        f[:-4]
+        f[:-len(mesh_nav_map_ext)]
         for f in os.listdir(os.path.join(pkg_mesh_navigation_tutorials, "maps"))
-        if f.endswith(".dae")
+        if f.endswith(mesh_nav_map_ext)
     ]
 
+    # Launch arguments
     launch_args = [
         DeclareLaunchArgument(
             "map_name",
@@ -165,10 +168,10 @@ def generate_launch_description():
                 [
                     pkg_mesh_navigation_tutorials,
                     "maps",
-                    PythonExpression(['"', map_name, '" + ".ply"']),
+                    PythonExpression(['"', map_name, mesh_nav_map_ext, '"']), # loading a map from here
                 ]
             ),
-            "mesh_map_working_path": PythonExpression(['"', map_name, '" + ".h5"'])
+            "mesh_map_working_path": PythonExpression(['"', map_name, '" + ".h5"']) # working on a local copy (as HDF5 format)
         }.items(),
     )
 
