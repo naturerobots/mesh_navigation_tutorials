@@ -1,3 +1,6 @@
+[![Jazzy CI](https://github.com/naturerobots/mesh_navigation_tutorials/actions/workflows/jazzy.yaml/badge.svg)](https://github.com/naturerobots/mesh_navigation_tutorials/actions/workflows/jazzy.yaml)
+[![Humble CI](https://github.com/naturerobots/mesh_navigation_tutorials/actions/workflows/humble.yaml/badge.svg)](https://github.com/naturerobots/mesh_navigation_tutorials/actions/workflows/humble.yaml)
+
 <div align="center">
 <h1>
 Mesh Navigation Tutorials
