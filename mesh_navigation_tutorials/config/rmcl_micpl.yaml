@@ -30,8 +30,8 @@ rmcl_micpl:
     # maximum number of correction steps per second
     # lower this to decrease the correction speed but save energy 
     disable_correction: False
-    correction_rate_max: 20.0
-    optimization_iterations: 5
+    correction_rate_max: 50.0
+    optimization_iterations: 10
     tf_time_source: 1 # 0: measurement_latest, 1: correction_latest
     tf_rate: 100.0
     broadcast_tf: True
