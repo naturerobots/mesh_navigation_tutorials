@@ -7,12 +7,12 @@ rmcl_lidar3d_conversion:
     debug_cloud: True
     model:
       range_min: 0.3
-      range_max: 80.0
+      range_max: 50.0
     # filter / pre-processing:
     width:
       skip_begin: 0 # skip elements from begin  
       skip_end:   0 # skip elements from end
-      increment:  4 # increment to skip data. Simple filter to reduce scan density
+      increment:  1 # increment to skip data. Simple filter to reduce scan density
     height:
       skip_begin: 0 # cutting height from begin
       skip_end:   0 # cutting height from end
@@ -57,6 +57,6 @@ rmcl_micpl:
           backend: embree
           type: RC
           metric: P2L
-          adaptive_max_dist_min: 0.5
-          max_dist: 2.0
+          adaptive_max_dist_min: 0.03
+          max_dist: 0.3
           visualize: True
