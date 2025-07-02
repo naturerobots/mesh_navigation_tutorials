@@ -41,10 +41,12 @@ from launch_ros.actions import Node
 
 
 def generate_launch_description():
-    # path to this pkg
+    # path to sim pkg
     pkg_mesh_navigation_tutorials_sim = get_package_share_directory(
         "mesh_navigation_tutorials_sim"
     )
+
+    # path to this pkg
     pkg_mesh_navigation_tutorials = get_package_share_directory("mesh_navigation_tutorials")
 
     # Comment Alex: One can have different maps for same worlds
@@ -132,29 +134,42 @@ def generate_launch_description():
     )
 
     # RMCL Localization
-    map_loc_rmcl_micp = Node(
-        package="rmcl",
-        executable="micp_localization",
-        name="micp_localization",
-        output="screen",
-        remappings=[
-            ("pose_wc", "/initialpose"),
-        ],
-        parameters=[
-            {
-                "use_sim_time": True,
-                "map_file": PathJoinSubstitution(
-                    [
-                        pkg_mesh_navigation_tutorials,
-                        "maps",
-                        PythonExpression(['"', map_name, '" + ".dae"']),
-                    ]
-                ),
-            },
-            PathJoinSubstitution([pkg_mesh_navigation_tutorials, "config", "rmcl_micpl.yaml"]),
-        ],
+
+    map_loc_rmcl_micpl = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            PathJoinSubstitution(
+                [pkg_mesh_navigation_tutorials, "launch", "rmcl_micpl_launch.py"]
+            )
+        ),
+        launch_arguments={
+            "map_name": map_name
+        }.items(),
         condition=IfCondition(PythonExpression(['"', localization_type, '" == "rmcl_micpl"'])),
-    )
+    )   
+
+    # map_loc_rmcl_micpl = Node(
+    #     package="rmcl_ros",
+    #     executable="micp_localization",
+    #     name="micp_localization",
+    #     output="screen",
+    #     remappings=[
+    #         ("pose_wc", "/initialpose"),
+    #     ],
+    #     parameters=[
+    #         {
+    #             "use_sim_time": True,
+    #             "map_file": PathJoinSubstitution(
+    #                 [
+    #                     pkg_mesh_navigation_tutorials,
+    #                     "maps",
+    #                     PythonExpression(['"', map_name, '" + ".dae"']),
+    #                 ]
+    #             ),
+    #         },
+    #         PathJoinSubstitution([pkg_mesh_navigation_tutorials, "config", "rmcl_micpl.yaml"]),
+    #     ],
+    #     condition=IfCondition(PythonExpression(['"', localization_type, '" == "rmcl_micpl"'])),
+    # )
 
     # Move Base Flex
     move_base_flex = IncludeLaunchDescription(
@@ -195,7 +210,7 @@ def generate_launch_description():
             simulation,
             ekf,
             map_loc_gt,
-            map_loc_rmcl_micp,
+            map_loc_rmcl_micpl,
             move_base_flex,
             rviz,
         ]

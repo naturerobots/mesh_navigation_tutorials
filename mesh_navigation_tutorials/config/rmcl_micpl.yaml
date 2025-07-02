@@ -1,44 +1,62 @@
-micp_localization:
+# Parameters for point cloud conversion node
+# it converts a sensor_msgs/PointCloud2 to a rmcl_msgs/O1DnStamped
+# simple fitering can be achieved by skipping rows or cols
+rmcl_lidar3d_conversion:
+  ros__parameters:
+    use_sim_time: True
+    debug_cloud: True
+    model:
+      range_min: 0.3
+      range_max: 80.0
+    # filter / pre-processing:
+    width:
+      skip_begin: 0 # skip elements from begin  
+      skip_end:   0 # skip elements from end
+      increment:  4 # increment to skip data. Simple filter to reduce scan density
+    height:
+      skip_begin: 0 # cutting height from begin
+      skip_end:   0 # cutting height from end
+      increment:  1 # increment to skip data. Simple filter to reduce scan density 
+
+# Parameters for the MICP-L node
+rmcl_micpl:
   ros__parameters:
 
-    # required
+    # required frames
     base_frame: base_footprint
     map_frame: map
     odom_frame: odom
 
-    # rate of broadcasting tf transformations
-    tf_rate: 50.0
+    # maximum number of correction steps per second
+    # lower this to decrease the correction speed but save energy 
+    disable_correction: False
+    correction_rate_max: 20.0
+    optimization_iterations: 5
+    tf_time_source: 1 # 0: measurement_latest, 1: correction_latest
+    tf_rate: 100.0
+    broadcast_tf: True
+    publish_pose: True
+    pose_noise: 0.01 # minimum noise of pose. can be set from sensor noise
 
-    micp:
-      # merging on gpu or cpu
-      combining_unit: cpu
-      # maximum number of correction steps per second
-      # lower this to decrease the correction speed but save energy 
-      corr_rate_max: 20.0
-      
-      # adjust max distance dependend of the state of localization
-      adaptive_max_dist: True # enable adaptive max dist
+    # adjust max distance dependent of the state of localization
+    adaptive_max_dist: True # enable adaptive max dist
 
-      # DEBUGGING   
-      # corr = correspondences
-      viz_corr: True
-      # corr = correction
-      print_corr_rate: False
-      disable_corr: False
+    # initial offset applied to every incoming pose guess
+    pose_guess_offset: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0] # translation + euler angles (6) or translation + quaternion (7)
 
-      # initial pose changes
-      trans: [0.0, 0.0, 0.0]
-      rot: [0.0, 0.0, 0.0] # euler angles (3) or quaternion (4) 
+    # very first initial pose guess
+    initial_pose_guess: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0] # translation + euler angles (6) or translation + quaternion (7)
 
     # describe your sensor setup here
     sensors: # list of range sensors - at least one is required
-      laser3d:
-        topic: cloud
-        topic_type: sensor_msgs/msg/PointCloud2
-        # normally it could also be a more memory-friendly spherical sensor model. 
-        # However, I dont trust the Gazebo sensor
-        type: o1dn
-        model:
-          range_min: 0.5
-          range_max: 130.0
-          orig: [0.0, 0.0, 0.0]
+      lidar3d:
+        data_source: topic
+        model_type: o1dn
+        topic_name: /rmcl_inputs/cloud
+        correspondences:
+          backend: embree
+          type: RC
+          metric: P2L
+          adaptive_max_dist_min: 0.5
+          max_dist: 2.0
+          visualize: True
