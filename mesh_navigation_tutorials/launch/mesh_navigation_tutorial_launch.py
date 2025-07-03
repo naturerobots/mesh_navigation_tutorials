@@ -147,29 +147,6 @@ def generate_launch_description():
         condition=IfCondition(PythonExpression(['"', localization_type, '" == "rmcl_micpl"'])),
     )   
 
-    # map_loc_rmcl_micpl = Node(
-    #     package="rmcl_ros",
-    #     executable="micp_localization",
-    #     name="micp_localization",
-    #     output="screen",
-    #     remappings=[
-    #         ("pose_wc", "/initialpose"),
-    #     ],
-    #     parameters=[
-    #         {
-    #             "use_sim_time": True,
-    #             "map_file": PathJoinSubstitution(
-    #                 [
-    #                     pkg_mesh_navigation_tutorials,
-    #                     "maps",
-    #                     PythonExpression(['"', map_name, '" + ".dae"']),
-    #                 ]
-    #             ),
-    #         },
-    #         PathJoinSubstitution([pkg_mesh_navigation_tutorials, "config", "rmcl_micpl.yaml"]),
-    #     ],
-    #     condition=IfCondition(PythonExpression(['"', localization_type, '" == "rmcl_micpl"'])),
-    # )
 
     # Move Base Flex
     move_base_flex = IncludeLaunchDescription(
