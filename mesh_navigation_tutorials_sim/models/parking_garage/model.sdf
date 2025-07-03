@@ -20,5 +20,23 @@
       </geometry>
     </visual>
   </link>
+  <link name="link_flipped">
+    <collision name="collision">
+      <geometry>
+        <mesh>
+          <scale>1 1 1</scale>
+          <uri>meshes/parking_garage_flipped.dae</uri>
+        </mesh>
+      </geometry>
+    </collision>
+    <visual name="visual">
+      <geometry>
+        <mesh>
+          <scale>1 1 1</scale>
+          <uri>meshes/parking_garage_flipped.dae</uri>
+        </mesh>
+      </geometry>
+    </visual>
+  </link>
 </model>
 </sdf>

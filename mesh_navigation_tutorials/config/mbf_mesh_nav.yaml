@@ -61,8 +61,8 @@ move_base_flex:
       inflation:
         type: 'mesh_layers/InflationLayer'
         factor: 1.0
-        inflation_radius: 0.2
-        inscribed_radius: 0.4
+        inflation_radius: 0.5
+        inscribed_radius: 0.7
         lethal_value: 1.0
-        inscribed_value: 0.8
+        inscribed_value: 0.6
         repulsive_field: false

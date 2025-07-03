@@ -41,16 +41,9 @@ from launch_ros.actions import Node
 
 
 def generate_launch_description():
-    # path to sim pkg
-    pkg_mesh_navigation_tutorials_sim = get_package_share_directory(
-        "mesh_navigation_tutorials_sim"
-    )
 
     # path to this pkg
     pkg_mesh_navigation_tutorials = get_package_share_directory("mesh_navigation_tutorials")
-
-    # Comment Alex: One can have different maps for same worlds
-    # Is this to much choice for a tutorial?
 
     # Loading a map files with the following extension
     mesh_nav_map_ext = ".ply"
@@ -83,112 +76,60 @@ def generate_launch_description():
             choices=["True", "False"],
         ),
     ]
+
     map_name = LaunchConfiguration("map_name")
-    world_name = LaunchConfiguration("world_name")
-    start_rviz = LaunchConfiguration("start_rviz")
-    localization_type = LaunchConfiguration("localization_type")
 
-    # suggestion:
-    # - every world has one map with same name as default
-    # - only if map_name is specified another map than default is loaded
-    # map_name = world_name
+    rmcl_micpl_config = PathJoinSubstitution([
+                    pkg_mesh_navigation_tutorials, 
+                    "config", 
+                    "rmcl_micpl.yaml"])
 
-    # Launch simulation environment and robot
-    simulation = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            PathJoinSubstitution(
-                [pkg_mesh_navigation_tutorials_sim, "launch", "simulation_launch.py"]
-            )
-        )
-    )
-
-    # odom -> base_footprint
-    ekf = Node(
-        package="robot_localization",
-        executable="ekf_node",
-        name="ekf_filter_node",
-        output="screen",
-        parameters=[
-            {"use_sim_time": True},
-            PathJoinSubstitution([pkg_mesh_navigation_tutorials, "config", "ekf.yaml"]),
-        ],
-    )
-
-    # Ground truth map localization
-    map_loc_gt = Node(
-        package="mesh_navigation_tutorials_sim",
-        executable="ground_truth_localization_node",
-        name="ground_truth_localization_node",
-        output="screen",
-        parameters=[
-            {
-                "use_sim_time": True,
-                "gz_parent_frame": world_name,
-                "gz_child_frame": "robot",
-                "ros_parent_frame": "map",
-                "ros_child_frame": "base_footprint",
-                "ros_odom_frame": "odom",
-            }
-        ],
-        condition=IfCondition(PythonExpression(['"', localization_type, '" == "ground_truth"'])),
-    )
-
-    # RMCL Localization
-
-    map_loc_rmcl_micpl = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            PathJoinSubstitution(
-                [pkg_mesh_navigation_tutorials, "launch", "rmcl_micpl_launch.py"]
-            )
-        ),
-        launch_arguments={
-            "map_name": map_name
-        }.items(),
-        condition=IfCondition(PythonExpression(['"', localization_type, '" == "rmcl_micpl"'])),
-    )   
-
-
-    # Move Base Flex
-    move_base_flex = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            PathJoinSubstitution(
-                [pkg_mesh_navigation_tutorials, "launch", "mbf_mesh_navigation_server_launch.py"]
-            )
-        ),
-        launch_arguments={
-            "mesh_map_path": PathJoinSubstitution(
-                [
+    mesh_map_path = PathJoinSubstitution([
                     pkg_mesh_navigation_tutorials,
                     "maps",
-                    PythonExpression(['"', map_name, mesh_nav_map_ext, '"']),
-                ]
-            ),
-            "mesh_map_working_path": PythonExpression(['"', map_name, '" + ".h5"'])
-        }.items(),
+                    PythonExpression(['"', map_name, '.ply"']),
+                ])
+
+
+    # conversion
+    pc2_to_o1dn_conversion = Node(
+        package="rmcl_ros",
+        executable="conv_pc2_to_o1dn_node",
+        name="rmcl_lidar3d_conversion",
+        output="screen",
+        remappings=[
+            ("input", "/cloud"),
+            ("output", "/rmcl_inputs/cloud"),
+        ],
+        parameters=[
+            rmcl_micpl_config,
+            {
+                "use_sim_time": True
+            },
+        ],
     )
 
-    # Start rviz, if desired
-    rviz = Node(
-        package="rviz2",
-        executable="rviz2",
+    
+    # MICP-L (Mesh ICP localization) from RMCL package
+    micpl = Node(
+        package="rmcl_ros",
+        executable="micp_localization_node",
+        name="rmcl_micpl",
+        output="screen",
         parameters=[
-            {"use_sim_time": True},
+            rmcl_micpl_config,
+            {
+                "use_sim_time": True,
+                "map_file": mesh_map_path
+            },
         ],
-        arguments=[
-            "-d",
-            PathJoinSubstitution([pkg_mesh_navigation_tutorials, "rviz", "default.rviz"]),
-        ],
-        condition=IfCondition(start_rviz),
     )
 
     return LaunchDescription(
         launch_args
         + [
-            simulation,
-            ekf,
-            map_loc_gt,
-            map_loc_rmcl_micpl,
-            move_base_flex,
-            rviz,
+            pc2_to_o1dn_conversion,
+            micpl
         ]
     )
+
