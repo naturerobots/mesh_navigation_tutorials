@@ -11,7 +11,7 @@ move_base_flex:
     planners: ['mesh_planner']
     mesh_planner:
       type: 'cvp_mesh_planner/CVPMeshPlanner'
-      cost_limit: 0.8
+      cost_limit: 0.95
       publish_vector_field: true
     planner_patience: 10.0
     planner_max_retries: 2
@@ -61,8 +61,9 @@ move_base_flex:
       inflation:
         type: 'mesh_layers/InflationLayer'
         factor: 1.0
-        inflation_radius: 0.5
-        inscribed_radius: 0.7
-        lethal_value: 1.0
-        inscribed_value: 0.6
+        inflation_radius: 1.0 # outer ring
+        inscribed_radius: 0.5 # inner ring
+        lethal_value: 1.0 # is also inscribed value
+        inscribed_value: 1.0
         repulsive_field: false
+        cost_scaling_factor: 2.0
