@@ -132,13 +132,13 @@ Visualization Manager:
             Value: Vertex Costs
             Vertex Color Service Name: get_vertex_colors
             Vertex Colors Topic:
-              Depth: 1
+              Depth: 10
               Durability Policy: Transient Local
               History Policy: Keep Last
               Reliability Policy: Reliable
               Value: /move_base_flex/vertex_colors
             Vertex Costs Topic:
-              Depth: 1
+              Depth: 10
               Durability Policy: System Default
               History Policy: Keep All
               Reliability Policy: System Default
