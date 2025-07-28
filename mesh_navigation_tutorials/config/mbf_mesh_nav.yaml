@@ -11,8 +11,9 @@ move_base_flex:
     planners: ['mesh_planner']
     mesh_planner:
       type: 'cvp_mesh_planner/CVPMeshPlanner'
-      cost_limit: 0.8
+      cost_limit: 2.0 # inscribed radius has inf values. so they will be avoided independent on how we select this value
       publish_vector_field: true
+
     planner_patience: 10.0
     planner_max_retries: 2
     project_path_onto_mesh: false
@@ -31,38 +32,58 @@ move_base_flex:
 
     mesh_map:
       # input
-      # mesh_file: '/home/amock/mesh_nav_ws/src/mesh_navigation_tutorials/mesh_navigation_tutorials/maps/parking_garage.ply'
+      # In this examples, `mesh_file` is set dynamically from the launch file. 
+      # you can also set it statically:
+      # mesh_file: '.../parking_garage.ply'
       mesh_part: '/'
       # storage
       # mesh_working_file: 'parking_garage.h5'
       mesh_working_part: 'mesh'
 
       # half-edge-mesh implementation
-      hem: pmp # pmp (default), lvr
+      # pmp (default), lvr
+      hem: pmp
 
+      # compute each layer's vertex costs in the following order
       layers: ['border', 'height_diff', 'roughness', 'inflation']
+      # After computing the layers, a final combined vertex cost is determined by linearly combine all layers' vertex costs:
+      # -> vertex_cost = layer1.combination_weight * layer1.vertex_cost + layer2.combination_weight * layer2.vertex_cost + ...
+      # The lethal vertices are accumulated in a set along the layer list
 
       height_diff:
         type: 'mesh_layers/HeightDiffLayer'
-        factor: 1.0
+        combination_weight: 0.0
         threshold: 0.8
 
       border:
         type: 'mesh_layers/BorderLayer'
-        factor: 1.0
+        combination_weight: 0.0
         border_cost: 1.0
         threshold: 0.2
 
       roughness:
         type: 'mesh_layers/RoughnessLayer'
-        factor: 1.0
+        combination_weight: 0.0
         threshold: 0.8
 
       inflation:
         type: 'mesh_layers/InflationLayer'
-        factor: 1.0
-        inflation_radius: 0.5
-        inscribed_radius: 0.7
-        lethal_value: 1.0
-        inscribed_value: 0.6
+        combination_weight: 1.0
+        inflation_radius: 1.5 # outer ring
+        inscribed_radius: 0.4 # inner ring
+        lethal_value: 1.0 # is also inscribed value
+        inscribed_value: 1.0
         repulsive_field: false
+        cost_scaling_factor: 2.0
+
+      # An edge cost equals the total costs that are collected along a 
+      # triangle's edge by linearly interpolating the combined vertex costs
+      # This factor defines the factor that is used for the final edge weight
+      # -> edge_weight = edge_length + edge_cost_factor * edge_cost
+      # This edge_weight is then passed to the global planner to search for 
+      # the best path
+      # Note: Set this to 0.0 if you need the shortest path
+      edge_cost_factor: 5.0
+
+      # debug function: enable this, for publishing text markers with edge costs
+      publish_edge_weights_text: false
