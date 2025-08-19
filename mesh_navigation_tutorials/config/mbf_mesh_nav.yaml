@@ -45,15 +45,16 @@ move_base_flex:
       hem: pmp
 
       # these are the layers the MeshMap will load into the layer graph
-      layers: ['border', 
-              'height_diff', 
-              'roughness', 
-              'static_combination', 
-              'static_inflation', 
-              'obstacle', 
-              'obstacle_inflation',
-              'final']
-              
+      layers:
+        - border 
+        - height_diff 
+        - roughness 
+        - static_combination 
+        - static_inflation 
+        - obstacle 
+        - obstacle_inflation
+        - final
+
       # this sets the layer used for planning and control
       default_layer: 'final'
 
@@ -112,12 +113,7 @@ move_base_flex:
         cost_scaling_factor: 2.0
 
       final:
-        # This layer combines the three input layers by linearly combining vertex costs:
-        # -> vertex_cost = layer1.combination_weight * layer1.vertex_cost + layer2.combination_weight * layer2.vertex_cost + ...
-        # The input layers' lethal vertices are accumulated in a combined set
         type: 'mesh_layers/MaxCombinationLayer'
-        # The `inputs` parameter determines which layers are processed by this layer.
-        # If a layer does not process inputs, this parameter can be omitted
         inputs: ['static_inflation', 'obstacle_inflation']
 
       # An edge cost equals the total costs that are collected along a 
