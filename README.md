@@ -69,9 +69,9 @@ The MbfGoalActions rviz plugin contains a very tiny state machine that performs 
 * get a path to that pose
 * execute that path
 
-## Detailed Instructions 
+## Detailed Instructions
 
-For more detailed instructions on how to parameterize things or what things can be changed see the [wiki](https://github.com/naturerobots/mesh_navigation_tutorials/wiki)
+For more detailed instructions on how to parameterize things or what things can be changed see the [wiki](https://naturerobots.github.io/mesh_navigation_docs/tutorials/)
 
 
 ## Related Repositories

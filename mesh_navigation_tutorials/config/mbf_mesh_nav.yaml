@@ -44,14 +44,14 @@ move_base_flex:
       # pmp (default), lvr
       hem: pmp
 
-      # these are the layers the MeshMap will load into the layer graph
+      # Layers the MeshMap will load into the layer graph
       layers:
-        - border 
-        - height_diff 
-        - roughness 
-        - static_combination 
-        - static_inflation 
-        - obstacle 
+        - border
+        - height_diff
+        - roughness
+        - static_combination
+        - static_inflation
+        - obstacle
         - obstacle_inflation
         - final
 
@@ -97,7 +97,7 @@ move_base_flex:
       obstacle:
         type: 'mesh_layers/ObstacleLayer'
         combination_weight: 1.0
-        robot_height: 0.75
+        robot_height: 0.7
         max_obstacle_dist: 10.0
         topic: 'obstacle_points'
 

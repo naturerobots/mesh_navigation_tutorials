@@ -5,10 +5,11 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Move Base Flex1
+        - /Move Base Flex1/Mesh Map1/Display Type1
         - /Move Base Flex1/Mesh Map1/Display Type1/Vertex Colors Topic1
         - /Move Base Flex1/Planner Debug Marker1/Namespaces1
       Splitter Ratio: 0.7377892136573792
-    Tree Height: 671
+    Tree Height: 625
   - Class: rviz_common/Selection
     Name: Selection
   - Class: rviz_common/Tool Properties
@@ -25,7 +26,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: PointCloud2
+    SyncSource: LiDARCloud
   - Class: rviz_mbf_plugins/MbfGoalActions
     Name: MbfGoalActions
     exe_path_action_server_path: /move_base_flex/exe_path
@@ -124,7 +125,7 @@ Visualization Manager:
           Display Type:
             Color Scale: Red Green
             Costs Topic:
-              Depth: 5
+              Depth: 20
               Durability Policy: Volatile
               History Policy: Keep Last
               Reliability Policy: Reliable
@@ -152,7 +153,7 @@ Visualization Manager:
               History Policy: Keep Last
               Reliability Policy: Reliable
               Value: /move_base_flex/vertex_colors
-            Vertex Costs Type: inflation
+            Vertex Costs Type: final
           Enabled: true
           Geometry Topic:
             Depth: 1
@@ -175,7 +176,7 @@ Visualization Manager:
           Enabled: true
           Name: Planner Vectorfield
           Namespaces:
-            {}
+            vector_field: true
           Topic:
             Depth: 5
             Durability Policy: Volatile
@@ -272,8 +273,8 @@ Visualization Manager:
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 1.0203394889831543
-        Min Value: -0.05331164598464966
+        Max Value: 1.0250710248947144
+        Min Value: -0.07776486873626709
         Value: true
       Axis: Z
       Channel Name: intensity
@@ -287,7 +288,7 @@ Visualization Manager:
       Max Intensity: 0
       Min Color: 0; 0; 0
       Min Intensity: 0
-      Name: PointCloud2
+      Name: LiDARCloud
       Position Transformer: XYZ
       Selectable: true
       Size (Pixels): 3
@@ -299,6 +300,39 @@ Visualization Manager:
         History Policy: Keep Last
         Reliability Policy: Reliable
         Value: /cloud
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz_default_plugins/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: Intensity
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 4096
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: ObstacleCloud
+      Position Transformer: XYZ
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.009999999776482582
+      Style: Flat Squares
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /obstacle_points
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
@@ -340,35 +374,35 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 17.99980926513672
+      Distance: 19.708669662475586
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 6.068273544311523
-        Y: -0.9949296712875366
-        Z: 0.17818385362625122
+        X: -0.0912967100739479
+        Y: -0.06437145918607712
+        Z: -2.918992042541504
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.6403999924659729
+      Pitch: 0.7447971701622009
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 3.140411138534546
+      Yaw: 3.128507375717163
     Saved: ~
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 1011
+  Height: 965
   Hide Left Dock: false
   Hide Right Dock: false
   MbfGoalActions:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd0000000400000000000001560000034bfc0200000007fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005d00fffffffb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003f0000034b000000cc00fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000011b0000034bfc0200000005fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730000000054000000870000005d00fffffffb0000000a00560069006500770073010000003f000001a1000000a900fffffffb0000001c004d006200660047006f0061006c0041006300740069006f006e007301000001e6000001a40000017600fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007301000003a9000001510000000000000000fb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e100000197000000030000078000000044fc0100000002fb0000000800540069006d00650100000000000007800000026f00fffffffb0000000800540069006d00650100000000000004500000000000000000000005030000034b00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000400000000000001a10000031dfc0200000007fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005d00fffffffb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003f0000031d000000cc00fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000011b0000031dfc0200000005fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730000000054000000870000005d00fffffffb0000000a00560069006500770073010000003f0000018a000000a900fffffffb0000001c004d006200660047006f0061006c0041006300740069006f006e007301000001cf0000018d0000017600fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007301000003a9000001510000000000000000fb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e100000197000000030000078000000044fc0100000002fb0000000800540069006d00650100000000000007800000026f00fffffffb0000000800540069006d00650100000000000004500000000000000000000004b80000031d00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:
