@@ -60,3 +60,9 @@ rmcl_micpl:
           adaptive_max_dist_min: 0.03
           max_dist: 0.3
           visualize: True
+
+rmcl_seg:
+  ros__parameters:
+    map_frame: map
+    min_dist_outlier_scan: 0.15
+    min_dist_outlier_map: 0.15

@@ -45,9 +45,17 @@ move_base_flex:
       hem: pmp
 
       # these are the layers the MeshMap will load into the layer graph
-      layers: ['border', 'height_diff', 'roughness', 'combination', 'inflation']
+      layers: ['border', 
+              'height_diff', 
+              'roughness', 
+              'static_combination', 
+              'static_inflation', 
+              'obstacle', 
+              'obstacle_inflation',
+              'final']
+              
       # this sets the layer used for planning and control
-      default_layer: 'inflation'
+      default_layer: 'final'
 
       height_diff:
         type: 'mesh_layers/HeightDiffLayer'
@@ -65,7 +73,7 @@ move_base_flex:
         combination_weight: 1.0
         threshold: 0.8
 
-      combination:
+      static_combination:
         # This layer combines the three input layers by linearly combining vertex costs:
         # -> vertex_cost = layer1.combination_weight * layer1.vertex_cost + layer2.combination_weight * layer2.vertex_cost + ...
         # The input layers' lethal vertices are accumulated in a combined set
@@ -74,9 +82,9 @@ move_base_flex:
         # If a layer does not process inputs, this parameter can be omitted
         inputs: ['height_diff', 'border', 'roughness']
 
-      inflation:
+      static_inflation:
         type: 'mesh_layers/InflationLayer'
-        inputs: ['combination']
+        inputs: ['static_combination']
         combination_weight: 1.0
         inflation_radius: 1.5 # outer ring
         inscribed_radius: 0.4 # inner ring
@@ -84,6 +92,33 @@ move_base_flex:
         inscribed_value: 1.0
         repulsive_field: false
         cost_scaling_factor: 2.0
+
+      obstacle:
+        type: 'mesh_layers/ObstacleLayer'
+        combination_weight: 1.0
+        robot_height: 0.75
+        max_obstacle_dist: 10.0
+        topic: 'obstacle_points'
+
+      obstacle_inflation:
+        type: 'mesh_layers/InflationLayer'
+        inputs: ['obstacle']
+        combination_weight: 1.0
+        inflation_radius: 1.5 # outer ring
+        inscribed_radius: 0.4 # inner ring
+        lethal_value: .inf
+        inscribed_value: 1.0
+        repulsive_field: false
+        cost_scaling_factor: 2.0
+
+      final:
+        # This layer combines the three input layers by linearly combining vertex costs:
+        # -> vertex_cost = layer1.combination_weight * layer1.vertex_cost + layer2.combination_weight * layer2.vertex_cost + ...
+        # The input layers' lethal vertices are accumulated in a combined set
+        type: 'mesh_layers/MaxCombinationLayer'
+        # The `inputs` parameter determines which layers are processed by this layer.
+        # If a layer does not process inputs, this parameter can be omitted
+        inputs: ['static_inflation', 'obstacle_inflation']
 
       # An edge cost equals the total costs that are collected along a 
       # triangle's edge by linearly interpolating the combined vertex costs

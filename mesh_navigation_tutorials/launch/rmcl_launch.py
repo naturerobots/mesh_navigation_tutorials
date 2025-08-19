@@ -64,10 +64,16 @@ def generate_launch_description():
             choices=available_map_names,
         ),
         DeclareLaunchArgument(
-            "localization_type",
+            "localization",
             description="How the robot shall localize itself",
             default_value="ground_truth",
             choices=["ground_truth", "rmcl_micpl"],
+        ),
+        DeclareLaunchArgument(
+            "obstacle_segmentation",
+            description="Method to segment LiDAR point for obstacles",
+            default_value="none",
+            choices=["none", "ground_truth", "rmcl_seg"],
         ),
         DeclareLaunchArgument(
             "start_rviz",
@@ -78,11 +84,14 @@ def generate_launch_description():
     ]
 
     map_name = LaunchConfiguration("map_name")
+    localization = LaunchConfiguration("localization")
+    obstacle_segmentation = LaunchConfiguration("obstacle_segmentation")
 
-    rmcl_micpl_config = PathJoinSubstitution([
+
+    rmcl_config = PathJoinSubstitution([
                     pkg_mesh_navigation_tutorials, 
                     "config", 
-                    "rmcl_micpl.yaml"])
+                    "rmcl.yaml"])
 
     mesh_map_path = PathJoinSubstitution([
                     pkg_mesh_navigation_tutorials,
@@ -90,9 +99,12 @@ def generate_launch_description():
                     PythonExpression(['"', map_name, '.ply"']),
                 ])
 
-
     # conversion
-    pc2_to_o1dn_conversion = Node(
+    rmcl_pc2_to_o1dn_conv = Node(
+        condition=IfCondition(PythonExpression([
+            '"', localization, '" == "rmcl_micpl"', 
+            ' or ',
+            '"', obstacle_segmentation, '" == "rmcl_seg"'])),
         package="rmcl_ros",
         executable="conv_pc2_to_o1dn_node",
         name="rmcl_lidar3d_conversion",
@@ -102,22 +114,43 @@ def generate_launch_description():
             ("output", "/rmcl_inputs/cloud"),
         ],
         parameters=[
-            rmcl_micpl_config,
+            rmcl_config,
             {
                 "use_sim_time": True
             },
         ],
     )
 
-    
     # MICP-L (Mesh ICP localization) from RMCL package
-    micpl = Node(
+    rmcl_micpl = Node(
+        condition=IfCondition(PythonExpression(['"', localization, '" == "rmcl_micpl"'])),
         package="rmcl_ros",
         executable="micp_localization_node",
         name="rmcl_micpl",
         output="screen",
         parameters=[
-            rmcl_micpl_config,
+            rmcl_config,
+            {
+                "use_sim_time": True,
+                "map_file": mesh_map_path
+            },
+        ],
+    )
+
+    # MICP-L (Mesh ICP localization) from RMCL package
+    rmcl_seg = Node(
+        condition=IfCondition(PythonExpression(['"', obstacle_segmentation, '" == "rmcl_seg"'])),
+        package="rmcl_ros",
+        executable="o1dn_map_segmentation_embree_node",
+        name="rmcl_seg",
+        output="screen",
+        remappings=[
+            ("scan", "/rmcl_inputs/cloud"),
+            ("outlier_map", "~/outlier_map"),
+            ("outlier_scan", "obstacle_points"),
+        ],
+        parameters=[
+            rmcl_config,
             {
                 "use_sim_time": True,
                 "map_file": mesh_map_path
@@ -128,8 +161,9 @@ def generate_launch_description():
     return LaunchDescription(
         launch_args
         + [
-            pc2_to_o1dn_conversion,
-            micpl
+            rmcl_pc2_to_o1dn_conv,
+            rmcl_micpl,
+            rmcl_seg
         ]
     )
 
