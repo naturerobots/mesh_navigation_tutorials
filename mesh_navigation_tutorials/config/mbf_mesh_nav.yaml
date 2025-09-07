@@ -78,7 +78,7 @@ move_base_flex:
         # This layer combines the three input layers by linearly combining vertex costs:
         # -> vertex_cost = layer1.combination_weight * layer1.vertex_cost + layer2.combination_weight * layer2.vertex_cost + ...
         # The input layers' lethal vertices are accumulated in a combined set
-        type: 'mesh_layers/CombinationLayer'
+        type: 'mesh_layers/AvgCombinationLayer'
         # The `inputs` parameter determines which layers are processed by this layer.
         # If a layer does not process inputs, this parameter can be omitted
         inputs: ['height_diff', 'border', 'roughness']
