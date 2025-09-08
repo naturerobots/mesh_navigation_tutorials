@@ -43,8 +43,9 @@ With the hand-modelled examples we particularly aim to support low-end computers
 ## Run the Examples
 
 ### Launch
-```console
-ros2 launch mesh_navigation_tutorials mesh_navigation_tutorial_launch.py world_name:=floor_is_lava
+
+```bash
+ros2 launch mesh_navigation_tutorials mesh_navigation_tutorials_launch.py world_name:=floor_is_lava
 ```
 
 You change `floor_is_lava` by any world name that is available with this repository (see all by calling launch file with `--show-args`). Those are: 
