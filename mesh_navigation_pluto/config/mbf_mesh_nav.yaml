@@ -1,0 +1,132 @@
+move_base_flex:
+  ros__parameters:
+    global_frame: 'map'
+    robot_frame: 'base_footprint'
+    odom_topic: 'odom'
+
+    use_sim_time: true
+    force_stop_at_goal: true
+    force_stop_on_cancel: true
+
+    planners: ['mesh_planner']
+    mesh_planner:
+      type: 'cvp_mesh_planner/CVPMeshPlanner'
+      cost_limit: 0.99 # Vertices with costs higher than this value will be avoided. Has to be set *below* the inflation layer inscribed value to avoid obstacles in planning
+      publish_vector_field: true
+
+    planner_patience: 10.0
+    planner_max_retries: 2
+    project_path_onto_mesh: false
+
+    controllers: ['mesh_controller']
+    mesh_controller:
+      type: 'mesh_controller/MeshController'
+      ang_vel_factor: 7.0
+      lin_vel_factor: 1.0
+
+    controller_patience: 2.0
+    controller_max_retries: 4
+    dist_tolerance: 0.2
+    angle_tolerance: 0.8
+    cmd_vel_ignored_tolerance: 10.0
+
+    mesh_map:
+      # input
+      # In this examples, `mesh_file` is set dynamically from the launch file. 
+      # you can also set it statically:
+      # mesh_file: '.../parking_garage.ply'
+      mesh_part: '/'
+      # storage
+      # mesh_working_file: 'parking_garage.h5'
+      mesh_working_part: 'mesh'
+
+      # half-edge-mesh implementation
+      # pmp (default), lvr
+      hem: pmp
+
+      # Layers the MeshMap will load into the layer graph
+      layers:
+        - border
+        - height_diff
+        - roughness
+        - static_combination
+        - static_inflation
+        - obstacle
+        - obstacle_inflation
+        - final
+
+      # this sets the layer used for planning and control
+      default_layer: 'final'
+
+      height_diff:
+        type: 'mesh_layers/HeightDiffLayer'
+        combination_weight: 1.0
+        threshold: 0.2
+
+      border:
+        type: 'mesh_layers/BorderLayer'
+        combination_weight: 1.0
+        border_cost: 1.0
+        threshold: 0.2
+
+      roughness:
+        type: 'mesh_layers/RoughnessLayer'
+        combination_weight: 1.0
+        threshold: 0.8
+
+      static_combination:
+        # This layer combines the three input layers by linearly combining vertex costs:
+        # -> vertex_cost = layer1.combination_weight * layer1.vertex_cost + layer2.combination_weight * layer2.vertex_cost + ...
+        # The input layers' lethal vertices are accumulated in a combined set
+        type: 'mesh_layers/AvgCombinationLayer'
+        # The `inputs` parameter determines which layers are processed by this layer.
+        # If a layer does not process inputs, this parameter can be omitted
+        inputs: ['height_diff', 'border', 'roughness']
+
+      static_inflation:
+        type: 'mesh_layers/InflationLayer'
+        inputs: ['static_combination']
+        combination_weight: 1.0
+        inflation_radius: 1.5 # outer ring
+        inscribed_radius: 0.4 # inner ring
+        lethal_value: .inf
+        inscribed_value: 1.0
+        repulsive_field: false
+        cost_scaling_factor: 2.0
+
+      obstacle:
+        type: 'mesh_layers/ObstacleLayer'
+        combination_weight: 1.0
+        robot_height: 0.7
+        max_obstacle_dist: 10.0
+        topic: 'obstacle_points'
+
+      obstacle_inflation:
+        type: 'mesh_layers/InflationLayer'
+        inputs: ['obstacle']
+        combination_weight: 1.0
+        inflation_radius: 1.5 # outer ring
+        inscribed_radius: 0.4 # inner ring
+        lethal_value: .inf
+        inscribed_value: 1.0
+        repulsive_field: false
+        cost_scaling_factor: 2.0
+
+      final:
+        type: 'mesh_layers/MaxCombinationLayer'
+        inputs: ['static_inflation', 'obstacle_inflation']
+
+      # An edge cost equals the total costs that are collected along a 
+      # triangle's edge by linearly interpolating the combined vertex costs
+      # This factor defines the factor that is used for the final edge weight
+      # -> edge_weight = edge_length + edge_cost_factor * edge_cost
+      # This edge_weight is then passed to the global planner to search for 
+      # the best path
+      # Note: Set this to 0.0 if you need the shortest path
+      edge_cost_factor: 5.0
+
+      # debug function: enable this, for publishing text markers with edge costs
+      publish_edge_weights_text: false
+
+      # debug/development function: enable this to log the update times of changing layers to a csv file
+      enable_layer_timer: false
