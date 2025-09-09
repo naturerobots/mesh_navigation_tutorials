@@ -32,38 +32,26 @@ import os
 from ament_index_python.packages import get_package_share_directory
 
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription, DeclareLaunchArgument
+from launch.actions import DeclareLaunchArgument
 from launch.conditions import IfCondition
 from launch.substitutions import PathJoinSubstitution, PythonExpression, LaunchConfiguration
-from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 from launch_ros.actions import Node
 
 
 def generate_launch_description():
-    # path to sim pkg
-    pkg_mesh_navigation_pluto_sim = get_package_share_directory(
-        "mesh_navigation_pluto_sim"
-    )
 
     # path to this pkg
-    pkg_mesh_navigation_pluto = get_package_share_directory("mesh_navigation_pluto")
-
-    # Comment Alex: One can have different maps for same worlds
-    # Is this to much choice for a tutorial?
+    pkg_mesh_navigation_tutorials = get_package_share_directory("mesh_navigation_ceres")
 
     # Loading a map files with the following extension
     mesh_nav_map_ext = ".ply"
 
     available_map_names = [
         f[:-len(mesh_nav_map_ext)]
-        for f in os.listdir(os.path.join(pkg_mesh_navigation_pluto, "maps"))
+        for f in os.listdir(os.path.join(pkg_mesh_navigation_tutorials, "maps"))
         if f.endswith(mesh_nav_map_ext)
     ]
-
-    if not available_map_names:
-        print("[WARNING] No maps found. Check if you have downloaded them with a Git LFS (See Tutorials-Wiki or GitHub)")
-        exit()
 
     # Launch arguments
     launch_args = [
@@ -93,106 +81,88 @@ def generate_launch_description():
             choices=["True", "False"],
         ),
     ]
+
     map_name = LaunchConfiguration("map_name")
-    world_name = LaunchConfiguration("world_name")
-    start_rviz = LaunchConfiguration("start_rviz")
     localization = LaunchConfiguration("localization")
+    obstacle_segmentation = LaunchConfiguration("obstacle_segmentation")
 
-    # suggestion:
-    # - every world has one map with same name as default
-    # - only if map_name is specified another map than default is loaded
-    # map_name = world_name
 
-    # Launch simulation environment and robot
-    simulation = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            PathJoinSubstitution(
-                [pkg_mesh_navigation_pluto_sim, "launch", "simulation_launch.py"]
-            )
-        )
-    )
+    rmcl_config = PathJoinSubstitution([
+                    pkg_mesh_navigation_tutorials, 
+                    "config", 
+                    "rmcl.yaml"])
 
-    # odom -> base_footprint
-    ekf = Node(
-        package="robot_localization",
-        executable="ekf_node",
-        name="ekf_filter_node",
+    mesh_map_path = PathJoinSubstitution([
+                    pkg_mesh_navigation_tutorials,
+                    "maps",
+                    PythonExpression(['"', map_name, '.ply"']),
+                ])
+
+    # conversion
+    rmcl_pc2_to_o1dn_conv = Node(
+        condition=IfCondition(PythonExpression([
+            '"', localization, '" == "rmcl_micpl"', 
+            ' or ',
+            '"', obstacle_segmentation, '" == "rmcl_seg"'])),
+        package="rmcl_ros",
+        executable="conv_pc2_to_o1dn_node",
+        name="rmcl_lidar3d_conversion",
         output="screen",
+        remappings=[
+            ("input", "/cloud"),
+            ("output", "/rmcl_inputs/cloud"),
+        ],
         parameters=[
-            {"use_sim_time": True},
-            PathJoinSubstitution([pkg_mesh_navigation_pluto, "config", "ekf.yaml"]),
+            rmcl_config,
+            {
+                "use_sim_time": True
+            },
         ],
     )
 
-    # Ground truth map localization
-    map_loc_gt = Node(
-        package="mesh_navigation_tutorials_sim",
-        executable="ground_truth_localization_node",
-        name="ground_truth_localization_node",
+    # MICP-L (Mesh ICP localization) from RMCL package
+    rmcl_micpl = Node(
+        condition=IfCondition(PythonExpression(['"', localization, '" == "rmcl_micpl"'])),
+        package="rmcl_ros",
+        executable="micp_localization_node",
+        name="rmcl_micpl",
         output="screen",
         parameters=[
+            rmcl_config,
             {
                 "use_sim_time": True,
-                "gz_parent_frame": world_name,
-                "gz_child_frame": "robot",
-                "ros_parent_frame": "map",
-                "ros_child_frame": "base_footprint",
-                "ros_odom_frame": "odom",
-            }
+                "map_file": mesh_map_path
+            },
         ],
-        condition=IfCondition(PythonExpression(['"', localization, '" == "ground_truth"'])),
     )
 
-    # RMCL launch file
-    rmcl = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            PathJoinSubstitution(
-                [pkg_mesh_navigation_pluto, "launch", "rmcl_launch.py"]
-            )
-        )
-    )   
-
-    # Move Base Flex
-    move_base_flex = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            PathJoinSubstitution(
-                [pkg_mesh_navigation_pluto, "launch", "mbf_mesh_navigation_server_launch.py"]
-            )
-        ),
-        launch_arguments = {
-            "mesh_map_path": PathJoinSubstitution(
-                [
-                    pkg_mesh_navigation_pluto,
-                    "maps",
-                    PythonExpression(['"', map_name, mesh_nav_map_ext, '"']),
-                ]
-            ),
-            "mesh_map_working_path": PythonExpression(['"', map_name, '" + ".h5"'])
-        }.items(),
-    )
-
-    # Start rviz, if desired
-    rviz = Node(
-        package="rviz2",
-        executable="rviz2",
+    # MICP-L (Mesh ICP localization) from RMCL package
+    rmcl_seg = Node(
+        condition=IfCondition(PythonExpression(['"', obstacle_segmentation, '" == "rmcl_seg"'])),
+        package="rmcl_ros",
+        executable="o1dn_map_segmentation_embree_node",
+        name="rmcl_seg",
+        output="screen",
+        remappings=[
+            ("scan", "/rmcl_inputs/cloud"),
+            ("outlier_map", "~/outlier_map"),
+            ("outlier_scan", "obstacle_points"),
+        ],
         parameters=[
-            {"use_sim_time": True},
+            rmcl_config,
+            {
+                "use_sim_time": True,
+                "map_file": mesh_map_path
+            },
         ],
-        arguments=[
-            "-d",
-            PathJoinSubstitution([pkg_mesh_navigation_pluto, "rviz", "default.rviz"]),
-        ],
-        condition=IfCondition(start_rviz),
     )
 
     return LaunchDescription(
         launch_args
         + [
-            simulation,
-            ekf,
-            map_loc_gt,
-            rmcl,
-            move_base_flex,
-            rviz,
+            rmcl_pc2_to_o1dn_conv,
+            rmcl_micpl,
+            rmcl_seg
         ]
     )
+

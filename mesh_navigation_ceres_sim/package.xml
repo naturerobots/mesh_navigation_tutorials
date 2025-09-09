@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>mesh_navigation_ceres_sim</name>
+  <version>0.0.1</version>
+  <description>Ceres environments for ROS 2</description>
+  
+  <maintainer email="matthias.holoch@naturerobots.com">Matthias Holoch</maintainer>
+  <maintainer email="amock@uos.de">Alexander Mock</maintainer>
+  <maintainer email="jubraun@uos.de">Justus Braun</maintainer>
+  
+  <license>BSD-3-Clause</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <exec_depend>ros_gz_sim</exec_depend>
+  <exec_depend>mesh_navigation_tutorials_sim</exec_depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_cmake_copyright</test_depend>
+  <test_depend>ament_cmake_cppcheck</test_depend>
+  <test_depend>ament_cmake_pep257</test_depend>
+  <test_depend>ament_cmake_uncrustify</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+    <gazebo_ros gazebo_model_path="${prefix}/models"/>
+    <gazebo_ros gazebo_model_path="${prefix}/.." />
+  </export>
+</package>

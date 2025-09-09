@@ -42,12 +42,12 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
     # path to sim pkg
-    pkg_mesh_navigation_pluto_sim = get_package_share_directory(
-        "mesh_navigation_pluto_sim"
+    pkg_mesh_navigation_ceres_sim = get_package_share_directory(
+        "mesh_navigation_ceres_sim"
     )
 
     # path to this pkg
-    pkg_mesh_navigation_pluto = get_package_share_directory("mesh_navigation_pluto")
+    pkg_mesh_navigation_ceres = get_package_share_directory("mesh_navigation_ceres")
 
     # Comment Alex: One can have different maps for same worlds
     # Is this to much choice for a tutorial?
@@ -57,7 +57,7 @@ def generate_launch_description():
 
     available_map_names = [
         f[:-len(mesh_nav_map_ext)]
-        for f in os.listdir(os.path.join(pkg_mesh_navigation_pluto, "maps"))
+        for f in os.listdir(os.path.join(pkg_mesh_navigation_ceres, "maps"))
         if f.endswith(mesh_nav_map_ext)
     ]
 
@@ -107,7 +107,7 @@ def generate_launch_description():
     simulation = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             PathJoinSubstitution(
-                [pkg_mesh_navigation_pluto_sim, "launch", "simulation_launch.py"]
+                [pkg_mesh_navigation_ceres_sim, "launch", "simulation_launch.py"]
             )
         )
     )
@@ -120,7 +120,7 @@ def generate_launch_description():
         output="screen",
         parameters=[
             {"use_sim_time": True},
-            PathJoinSubstitution([pkg_mesh_navigation_pluto, "config", "ekf.yaml"]),
+            PathJoinSubstitution([pkg_mesh_navigation_ceres, "config", "ekf.yaml"]),
         ],
     )
 
@@ -147,7 +147,7 @@ def generate_launch_description():
     rmcl = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             PathJoinSubstitution(
-                [pkg_mesh_navigation_pluto, "launch", "rmcl_launch.py"]
+                [pkg_mesh_navigation_ceres, "launch", "rmcl_launch.py"]
             )
         )
     )   
@@ -156,13 +156,13 @@ def generate_launch_description():
     move_base_flex = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             PathJoinSubstitution(
-                [pkg_mesh_navigation_pluto, "launch", "mbf_mesh_navigation_server_launch.py"]
+                [pkg_mesh_navigation_ceres, "launch", "mbf_mesh_navigation_server_launch.py"]
             )
         ),
         launch_arguments = {
             "mesh_map_path": PathJoinSubstitution(
                 [
-                    pkg_mesh_navigation_pluto,
+                    pkg_mesh_navigation_ceres,
                     "maps",
                     PythonExpression(['"', map_name, mesh_nav_map_ext, '"']),
                 ]
@@ -180,7 +180,7 @@ def generate_launch_description():
         ],
         arguments=[
             "-d",
-            PathJoinSubstitution([pkg_mesh_navigation_pluto, "rviz", "default.rviz"]),
+            PathJoinSubstitution([pkg_mesh_navigation_ceres, "rviz", "default.rviz"]),
         ],
         condition=IfCondition(start_rviz),
     )

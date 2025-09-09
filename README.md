@@ -69,7 +69,8 @@ You change `floor_is_lava` by any world name that is available with this reposit
 
 When running a simulated world, you can save some resources by not running the gazebo GUI: Add the `start_gazebo_gui:=False` launch argument.
 
-### Rviz GUI
+### RViz GUI
+
 In rviz, you should be able to see the mesh map.
 This map is being used for navigation.
 
@@ -90,6 +91,13 @@ For more detailed instructions on how to parameterize things or what things can 
 Additionally, we offer larger maps that better resemble real-world scales:
 
 * [Pluto Maps](./mesh_navigation_pluto/)
+* [Ceres Maps](./mesh_navigation_ceres/)
+
+All requires Git LFS to be installed. Under Ubuntu you can simply type:
+
+```bash
+sudo apt install git-lfs
+```
 
 ## Related Repositories
 
