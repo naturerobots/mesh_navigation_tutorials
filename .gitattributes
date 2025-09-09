@@ -23,3 +23,8 @@ mesh_navigation_ceres/maps/cic_outdoor.ply filter=lfs diff=lfs merge=lfs -text
 mesh_navigation_ceres_sim/worlds/agrotechnicum.sdf filter=lfs diff=lfs merge=lfs -text
 mesh_navigation_ceres_sim/models/agrotechnicum/** filter=lfs diff=lfs merge=lfs -text
 mesh_navigation_ceres/maps/agrotechnicum.ply filter=lfs diff=lfs merge=lfs -text
+
+# FH Aachen Campus (Provided by MASKOR)
+mesh_navigation_ceres_sim/worlds/fh_aachen.sdf filter=lfs diff=lfs merge=lfs -text
+mesh_navigation_ceres_sim/models/fh_aachen/** filter=lfs diff=lfs merge=lfs -text
+mesh_navigation_ceres/maps/fh_aachen.ply filter=lfs diff=lfs merge=lfs -text
