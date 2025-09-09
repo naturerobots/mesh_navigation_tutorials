@@ -13,3 +13,13 @@ mesh_navigation_pluto_sim/worlds/stone_quarry_brockum.sdf filter=lfs diff=lfs me
 mesh_navigation_pluto_sim/models/stone_quarry_brockum/** filter=lfs diff=lfs merge=lfs -text
 mesh_navigation_pluto/maps/stone_quarry_brockum.ply filter=lfs diff=lfs merge=lfs -text
 
+
+# Coppenrath Innovation Centre (CIC) Outdoor 
+mesh_navigation_ceres_sim/worlds/cic_outdoor.sdf filter=lfs diff=lfs merge=lfs -text
+mesh_navigation_ceres_sim/models/cic_outdoor/** filter=lfs diff=lfs merge=lfs -text
+mesh_navigation_ceres/maps/cic_outdoor.ply filter=lfs diff=lfs merge=lfs -text
+
+# Agro-Technicum Osnabrueck
+mesh_navigation_ceres_sim/worlds/agrotechnicum.sdf filter=lfs diff=lfs merge=lfs -text
+mesh_navigation_ceres_sim/models/agrotechnicum/** filter=lfs diff=lfs merge=lfs -text
+mesh_navigation_ceres/maps/agrotechnicum.ply filter=lfs diff=lfs merge=lfs -text
