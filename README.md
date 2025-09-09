@@ -32,13 +32,24 @@ With the hand-modelled examples we particularly aim to support low-end computers
 
 ## Requirements and Installation
 
-* You need a working ROS 2 installation. We target `humble` at the moment.
-* Go into a ROS 2 workspace's source directory `cd $YOUR_ROS_WS/src`.
-* Clone the tutorial code `git clone git@github.com:naturerobots/mesh_navigation_tutorials.git`
-* Get the tutorial's ROS 2 dependencies
-  * Clone source dependencies: Run `vcs import --input mesh_navigation_tutorials/source_dependencies.yaml` in your ROS 2 workspace source directory.
-  * Get packaged dependencies: Run `rosdep install --from-paths . --ignore-src -r -y` from within your ROS 2 workspace source directory.
-* Build: Go to workspace root `cd $YOUR_ROS_WS` and run `colcon build --packages-up-to mesh_navigation_tutorials`.
+You need a working ROS 2 installation. We target `humble` at the moment. Go into a ROS 2 workspace's source directory `cd $YOUR_ROS_WS/src`. Then clone the tutorial code 
+
+```bash
+GIT_LFS_SKIP_SMUDGE=1 git clone git@github.com:naturerobots/mesh_navigation_tutorials.git
+```
+
+> [!NOTE] 
+> If you forget to add `GIT_LFS_SKIP_SMUDGE=1` before `git clone` and you have Git LFS installed, all available maps will be downloaded during the clone. This may take a while. But than you skip all the Git LFS commands later.
+
+Get the tutorial's ROS 2 dependencies
+* Clone source dependencies: Run `vcs import --input mesh_navigation_tutorials/source_dependencies.yaml` in your ROS 2 workspace source directory.
+* Get packaged dependencies: Run `rosdep install --from-paths . --ignore-src -r -y` from within your ROS 2 workspace source directory.
+
+Build: Go to workspace root `cd $YOUR_ROS_WS` and run 
+
+```bash
+colcon build --packages-up-to mesh_navigation_tutorials
+```
 
 ## Run the Examples
 
