@@ -8,7 +8,7 @@ The following maps are available within this package:
 
 - `cic_outdoor`
 - `agro_technicum`
-- `stone_quarry_brockum`
+- `fh_aachen`
 
 While being in the source directory of this repository, download all Ceres maps by entering
 
@@ -39,3 +39,7 @@ ros2 launch mesh_navigation_ceres mesh_navigation_ceres_launch.py world_name:=ci
 > [!NOTE]
 > Since the maps are quite large the startup might take some time to load.
 
+
+## Acknowledgements
+
+We thank the [MASKOR](https://maskor.fh-aachen.de/) institute for supplying the TLS data of the `fh_aachen` environment for public use.
