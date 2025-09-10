@@ -2,7 +2,7 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>mesh_navigation_tutorials_sim</name>
-  <version>0.0.1</version>
+  <version>3.0.0</version>
   <description>Tutorials for mobile robot navigation in 3D, using mesh maps.</description>
   
   <maintainer email="matthias.holoch@naturerobots.com">Matthias Holoch</maintainer>
