@@ -99,6 +99,8 @@ All requires Git LFS to be installed. Under Ubuntu you can simply type:
 sudo apt install git-lfs
 ```
 
+Find more details about the environments here: [Virtual Worlds](https://naturerobots.github.io/mesh_navigation_docs/tutorials/tutorial_worlds/)
+
 ## Related Repositories
 
 * [Move Base Flex](https://github.com/magazino/move_base_flex) ([IROS 2018](https://doi.org/10.1109/IROS.2018.8593829))
