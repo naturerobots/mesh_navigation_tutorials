@@ -32,19 +32,31 @@ With the hand-modelled examples we particularly aim to support low-end computers
 
 ## Requirements and Installation
 
-* You need a working ROS 2 installation. We target `humble` at the moment.
-* Go into a ROS 2 workspace's source directory `cd $YOUR_ROS_WS/src`.
-* Clone the tutorial code `git clone git@github.com:naturerobots/mesh_navigation_tutorials.git`
-* Get the tutorial's ROS 2 dependencies
-  * Clone source dependencies: Run `vcs import --input mesh_navigation_tutorials/source_dependencies.yaml` in your ROS 2 workspace source directory.
-  * Get packaged dependencies: Run `rosdep install --from-paths . --ignore-src -r -y` from within your ROS 2 workspace source directory.
-* Build: Go to workspace root `cd $YOUR_ROS_WS` and run `colcon build --packages-up-to mesh_navigation_tutorials`.
+You need a working ROS 2 installation. We target `humble` at the moment. Go into a ROS 2 workspace's source directory `cd $YOUR_ROS_WS/src`. Then clone the tutorial code 
+
+```bash
+GIT_LFS_SKIP_SMUDGE=1 git clone git@github.com:naturerobots/mesh_navigation_tutorials.git
+```
+
+> [!NOTE] 
+> If you forget to add `GIT_LFS_SKIP_SMUDGE=1` before `git clone` and you have Git LFS installed, all available maps will be downloaded during the clone. This may take a while. But than you skip all the Git LFS commands later.
+
+Get the tutorial's ROS 2 dependencies
+* Clone source dependencies: Run `vcs import --input mesh_navigation_tutorials/source_dependencies.yaml` in your ROS 2 workspace source directory.
+* Get packaged dependencies: Run `rosdep install --from-paths . --ignore-src -r -y` from within your ROS 2 workspace source directory.
+
+Build: Go to workspace root `cd $YOUR_ROS_WS` and run 
+
+```bash
+colcon build --packages-up-to mesh_navigation_tutorials
+```
 
 ## Run the Examples
 
 ### Launch
-```console
-ros2 launch mesh_navigation_tutorials mesh_navigation_tutorial_launch.py world_name:=floor_is_lava
+
+```bash
+ros2 launch mesh_navigation_tutorials mesh_navigation_tutorials_launch.py world_name:=floor_is_lava
 ```
 
 You change `floor_is_lava` by any world name that is available with this repository (see all by calling launch file with `--show-args`). Those are: 
@@ -57,7 +69,8 @@ You change `floor_is_lava` by any world name that is available with this reposit
 
 When running a simulated world, you can save some resources by not running the gazebo GUI: Add the `start_gazebo_gui:=False` launch argument.
 
-### Rviz GUI
+### RViz GUI
+
 In rviz, you should be able to see the mesh map.
 This map is being used for navigation.
 
@@ -69,15 +82,33 @@ The MbfGoalActions rviz plugin contains a very tiny state machine that performs 
 * get a path to that pose
 * execute that path
 
-## Detailed Instructions 
+## Detailed Instructions
 
-For more detailed instructions on how to parameterize things or what things can be changed see the [wiki](https://github.com/naturerobots/mesh_navigation_tutorials/wiki)
+For more detailed instructions on how to parameterize things or what things can be changed see the [wiki](https://naturerobots.github.io/mesh_navigation_docs/tutorials/)
 
+## Extended Examples
+
+Additionally, we offer larger maps that better resemble real-world scales:
+
+* [Pluto Maps](./mesh_navigation_pluto/)
+* [Ceres Maps](./mesh_navigation_ceres/)
+
+All requires Git LFS to be installed. Under Ubuntu you can simply type:
+
+```bash
+sudo apt install git-lfs
+```
 
 ## Related Repositories
-- [Move Base Flex](https://github.com/magazino/move_base_flex) ([IROS 2018](https://doi.org/10.1109/IROS.2018.8593829))
-- [Mesh Tools](https://github.com/naturerobots/mesh_tools) ([RAS 2021](https://doi.org/10.1016/j.robot.2020.103688))
-- [Mesh Navigation](https://github.com/naturerobots/mesh_navigation) ([ICRA 2021 paper for Continuous Vector Field Planner, CVP](https://doi.org/10.1109/ICRA48506.2021.9560981))
-- [Rmagine](https://github.com/uos/rmagine) ([ICRA 2023](https://doi.org/10.1109/ICRA48891.2023.10161388))
-- [MICP-L](https://github.com/uos/rmcl) ([IROS 2024](https://arxiv.org/abs/2210.13904))
-- [RMCL](https://github.com/uos/rmcl)
+
+* [Move Base Flex](https://github.com/magazino/move_base_flex) ([IROS 2018](https://doi.org/10.1109/IROS.2018.8593829))
+* [Mesh Tools](https://github.com/naturerobots/mesh_tools) ([RAS 2021](https://doi.org/10.1016/j.robot.2020.103688))
+* [Mesh Navigation](https://github.com/naturerobots/mesh_navigation) ([ICRA 2021 paper for Continuous Vector Field Planner, CVP](https://doi.org/10.1109/ICRA48506.2021.9560981))
+* [Rmagine](https://github.com/uos/rmagine) ([ICRA 2023](https://doi.org/10.1109/ICRA48891.2023.10161388))
+* [MICP-L](https://github.com/uos/rmcl) ([IROS 2024](https://arxiv.org/abs/2210.13904))
+* [RMCL](https://github.com/uos/rmcl)
+
+
+
+
+

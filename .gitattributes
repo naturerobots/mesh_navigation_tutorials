@@ -1,0 +1,30 @@
+# Physics Campus UOS 
+mesh_navigation_pluto_sim/worlds/physics_campus_uos.sdf filter=lfs diff=lfs merge=lfs -text
+mesh_navigation_pluto_sim/models/physics_campus_uos/** filter=lfs diff=lfs merge=lfs -text
+mesh_navigation_pluto/maps/physics_campus_uos.ply filter=lfs diff=lfs merge=lfs -text
+
+# Botanical Garden Osnabrueck
+mesh_navigation_pluto_sim/worlds/botanical_garden_osnabrueck.sdf filter=lfs diff=lfs merge=lfs -text
+mesh_navigation_pluto_sim/models/botanical_garden_osnabrueck/** filter=lfs diff=lfs merge=lfs -text
+mesh_navigation_pluto/maps/botanical_garden_osnabrueck.ply filter=lfs diff=lfs merge=lfs -text
+
+# Stone Quarry Brockum
+mesh_navigation_pluto_sim/worlds/stone_quarry_brockum.sdf filter=lfs diff=lfs merge=lfs -text
+mesh_navigation_pluto_sim/models/stone_quarry_brockum/** filter=lfs diff=lfs merge=lfs -text
+mesh_navigation_pluto/maps/stone_quarry_brockum.ply filter=lfs diff=lfs merge=lfs -text
+
+
+# Coppenrath Innovation Centre (CIC) Outdoor 
+mesh_navigation_ceres_sim/worlds/cic_outdoor.sdf filter=lfs diff=lfs merge=lfs -text
+mesh_navigation_ceres_sim/models/cic_outdoor/** filter=lfs diff=lfs merge=lfs -text
+mesh_navigation_ceres/maps/cic_outdoor.ply filter=lfs diff=lfs merge=lfs -text
+
+# Agro-Technicum Osnabrueck
+mesh_navigation_ceres_sim/worlds/agrotechnicum.sdf filter=lfs diff=lfs merge=lfs -text
+mesh_navigation_ceres_sim/models/agrotechnicum/** filter=lfs diff=lfs merge=lfs -text
+mesh_navigation_ceres/maps/agrotechnicum.ply filter=lfs diff=lfs merge=lfs -text
+
+# FH Aachen Campus (Provided by MASKOR)
+mesh_navigation_ceres_sim/worlds/fh_aachen.sdf filter=lfs diff=lfs merge=lfs -text
+mesh_navigation_ceres_sim/models/fh_aachen/** filter=lfs diff=lfs merge=lfs -text
+mesh_navigation_ceres/maps/fh_aachen.ply filter=lfs diff=lfs merge=lfs -text

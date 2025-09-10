@@ -32,46 +32,52 @@ import os
 from ament_index_python.packages import get_package_share_directory
 
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription, DeclareLaunchArgument
-from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
-from launch_ros.substitutions import FindPackageShare
+from launch.actions import DeclareLaunchArgument
+from launch.substitutions import LaunchConfiguration
+
+from launch_ros.actions import Node
+
 
 def generate_launch_description():
-    # path to this pkg
-
-    pkg_mesh_navigation_tutorials_sim = get_package_share_directory(
-        "mesh_navigation_tutorials_sim"
-    )
-
-    # find all worlds available
-    available_world_names = [
-        f[:-4]
-        for f in os.listdir(os.path.join(pkg_mesh_navigation_tutorials_sim, "worlds"))
-        if f.endswith(".sdf")
-    ]
-
-    # Launch arguments (override/specialize base arguments)
     launch_args = [
         DeclareLaunchArgument(
-            "world_name",
-            description="Name of the world to simulate"
-            + '(see mesh_navigation_tutorials\' "worlds" directory).',
-            default_value=available_world_names[0],
-            choices=available_world_names,
+            "mesh_map_path",
+            description="Path to the mesh file that defines the map."
+            "Allowed formats are our internal HDF5 format and all"
+            "standard mesh formats loadable by Assimp.",
+        ),
+        DeclareLaunchArgument(
+            "mesh_map_working_path",
+            description="Path to the mesh file used by the mesh navigation "
+            "to store costs during operation. Only HDF5 formats are permitted.",
         ),
     ]
+    mesh_map_path = LaunchConfiguration("mesh_map_path")
+    mesh_map_working_path = LaunchConfiguration("mesh_map_working_path")
 
-    meshnav_sim = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            PathJoinSubstitution(
-                [FindPackageShare("mesh_navigation_tutorials_sim"), "launch", "base_simulation_launch.py"]
-            )
-        ),
-        launch_arguments={
-            "world_pkg": "mesh_navigation_tutorials_sim",
-            "world_name": LaunchConfiguration("world_name")
-        }.items(),
+    mbf_mesh_nav_config = os.path.join(
+        get_package_share_directory("mesh_navigation_ceres"), "config", "mbf_mesh_nav.yaml"
     )
 
-    return LaunchDescription(launch_args + [meshnav_sim])
+    mesh_nav_server = Node(
+        name="move_base_flex",
+        package="mbf_mesh_nav",
+        executable="mbf_mesh_nav",
+        remappings=[
+            ("/move_base_flex/cmd_vel", "/cmd_vel"),
+        ],
+        parameters=[
+            mbf_mesh_nav_config,
+            {
+                "mesh_map.mesh_file": mesh_map_path,
+                "mesh_map.mesh_working_file": mesh_map_working_path
+            }
+        ]
+    )
+
+    return LaunchDescription(
+        launch_args
+        + [
+            mesh_nav_server,
+        ]
+    )

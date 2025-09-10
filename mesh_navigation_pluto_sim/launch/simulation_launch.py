@@ -1,4 +1,4 @@
-# Copyright 2024 Nature Robots GmbH
+# Copyright 2025 Nature Robots GmbH
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -34,20 +34,24 @@ from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import IncludeLaunchDescription, DeclareLaunchArgument
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
-from launch_ros.substitutions import FindPackageShare
+from launch.substitutions import Command, FindExecutable
+from launch.substitutions import LaunchConfiguration, PythonExpression, PathJoinSubstitution
+
 
 def generate_launch_description():
     # path to this pkg
+    pkg_mesh_navigation_pluto_sim = get_package_share_directory(
+        "mesh_navigation_pluto_sim"
+    )
 
     pkg_mesh_navigation_tutorials_sim = get_package_share_directory(
         "mesh_navigation_tutorials_sim"
     )
 
-    # find all worlds available
+    # Launch arguments
     available_world_names = [
         f[:-4]
-        for f in os.listdir(os.path.join(pkg_mesh_navigation_tutorials_sim, "worlds"))
+        for f in os.listdir(os.path.join(pkg_mesh_navigation_pluto_sim, "worlds"))
         if f.endswith(".sdf")
     ]
 
@@ -65,11 +69,11 @@ def generate_launch_description():
     meshnav_sim = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             PathJoinSubstitution(
-                [FindPackageShare("mesh_navigation_tutorials_sim"), "launch", "base_simulation_launch.py"]
+                [pkg_mesh_navigation_tutorials_sim, "launch", "base_simulation_launch.py"]
             )
         ),
         launch_arguments={
-            "world_pkg": "mesh_navigation_tutorials_sim",
+            "world_pkg": "mesh_navigation_pluto_sim",
             "world_name": LaunchConfiguration("world_name")
         }.items(),
     )

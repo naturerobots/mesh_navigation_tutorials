@@ -71,10 +71,16 @@ def generate_launch_description():
             choices=available_map_names,
         ),
         DeclareLaunchArgument(
-            "localization_type",
+            "localization",
             description="How the robot shall localize itself",
             default_value="ground_truth",
             choices=["ground_truth", "rmcl_micpl"],
+        ),
+        DeclareLaunchArgument(
+            "obstacle_segmentation",
+            description="Method to segment LiDAR point for obstacles",
+            default_value="none",
+            choices=["none", "ground_truth", "rmcl_seg"],
         ),
         DeclareLaunchArgument(
             "start_rviz",
@@ -86,7 +92,7 @@ def generate_launch_description():
     map_name = LaunchConfiguration("map_name")
     world_name = LaunchConfiguration("world_name")
     start_rviz = LaunchConfiguration("start_rviz")
-    localization_type = LaunchConfiguration("localization_type")
+    localization = LaunchConfiguration("localization")
 
     # suggestion:
     # - every world has one map with same name as default
@@ -130,23 +136,17 @@ def generate_launch_description():
                 "ros_odom_frame": "odom",
             }
         ],
-        condition=IfCondition(PythonExpression(['"', localization_type, '" == "ground_truth"'])),
+        condition=IfCondition(PythonExpression(['"', localization, '" == "ground_truth"'])),
     )
 
-    # RMCL Localization
-
-    map_loc_rmcl_micpl = IncludeLaunchDescription(
+    # RMCL launch file
+    rmcl = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             PathJoinSubstitution(
-                [pkg_mesh_navigation_tutorials, "launch", "rmcl_micpl_launch.py"]
+                [pkg_mesh_navigation_tutorials, "launch", "rmcl_launch.py"]
             )
-        ),
-        launch_arguments={
-            "map_name": map_name
-        }.items(),
-        condition=IfCondition(PythonExpression(['"', localization_type, '" == "rmcl_micpl"'])),
+        )
     )   
-
 
     # Move Base Flex
     move_base_flex = IncludeLaunchDescription(
@@ -187,7 +187,7 @@ def generate_launch_description():
             simulation,
             ekf,
             map_loc_gt,
-            map_loc_rmcl_micpl,
+            rmcl,
             move_base_flex,
             rviz,
         ]
