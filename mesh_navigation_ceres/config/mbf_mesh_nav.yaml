@@ -40,10 +40,6 @@ move_base_flex:
       # mesh_working_file: 'parking_garage.h5'
       mesh_working_part: 'mesh'
 
-      # half-edge-mesh implementation
-      # pmp (default), lvr
-      hem: pmp
-
       # Layers the MeshMap will load into the layer graph
       layers:
         - border

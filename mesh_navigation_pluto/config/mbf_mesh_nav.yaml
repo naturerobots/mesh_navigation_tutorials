@@ -40,10 +40,6 @@ move_base_flex:
       # mesh_working_file: 'parking_garage.h5'
       mesh_working_part: 'mesh'
 
-      # half-edge-mesh implementation
-      # pmp (default), lvr
-      hem: pmp
-
       # Layers the MeshMap will load into the layer graph
       layers:
         - border
@@ -61,7 +57,8 @@ move_base_flex:
       height_diff:
         type: 'mesh_layers/HeightDiffLayer'
         combination_weight: 1.0
-        threshold: 0.2
+        threshold: 0.13
+        radius: 0.3
 
       border:
         type: 'mesh_layers/BorderLayer'
