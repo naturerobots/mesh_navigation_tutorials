@@ -56,28 +56,32 @@ def generate_launch_description():
     # Launch arguments
     launch_args = [
         DeclareLaunchArgument(
+            "world_name",
+            description="Name of the world being simulated.",
+            default_value="floor_is_lava",
+        ),
+        DeclareLaunchArgument(
             "map_name",
-            description="Name of the map to be used for navigation"
-            + '(see mesh_navigation_tutorials\' "maps" directory).',
+            description="Name of the map to be used for localization and segmentation.",
             default_value=LaunchConfiguration("world_name"),
             choices=available_map_names,
         ),
         DeclareLaunchArgument(
             "localization",
-            description="How the robot shall localize itself",
+            description="Localization method to use.",
             default_value="ground_truth",
             choices=["ground_truth", "rmcl_micpl"],
         ),
         DeclareLaunchArgument(
             "obstacle_segmentation",
-            description="Method to segment LiDAR point for obstacles",
+            description="Method to segment LiDAR points for obstacles.",
             default_value="none",
             choices=["none", "ground_truth", "rmcl_seg"],
         ),
         DeclareLaunchArgument(
-            "start_rviz",
-            description="Whether rviz shall be started.",
+            "use_sim_time",
             default_value="True",
+            description="Use simulation (Gazebo) clock if True.",
             choices=["True", "False"],
         ),
     ]
@@ -85,6 +89,7 @@ def generate_launch_description():
     map_name = LaunchConfiguration("map_name")
     localization = LaunchConfiguration("localization")
     obstacle_segmentation = LaunchConfiguration("obstacle_segmentation")
+    use_sim_time = LaunchConfiguration("use_sim_time")
 
 
     rmcl_config = PathJoinSubstitution([
@@ -115,7 +120,7 @@ def generate_launch_description():
         parameters=[
             rmcl_config,
             {
-                "use_sim_time": True
+                "use_sim_time": use_sim_time
             },
         ],
     )
@@ -130,7 +135,7 @@ def generate_launch_description():
         parameters=[
             rmcl_config,
             {
-                "use_sim_time": True,
+                "use_sim_time": use_sim_time,
                 "map_file": mesh_map_path
             },
         ],
@@ -151,7 +156,7 @@ def generate_launch_description():
         parameters=[
             rmcl_config,
             {
-                "use_sim_time": True,
+                "use_sim_time": use_sim_time,
                 "map_file": mesh_map_path
             },
         ],
