@@ -64,6 +64,12 @@ def generate_launch_description():
     # Launch arguments
     launch_args = [
         DeclareLaunchArgument(
+            "world_name",
+            description="Name of the world to simulate and use for navigation.",
+            default_value="floor_is_lava",
+            choices=available_map_names,
+        ),
+        DeclareLaunchArgument(
             "map_name",
             description="Name of the map to be used for navigation"
             + '(see mesh_navigation_tutorials\' "maps" directory).',

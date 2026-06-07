@@ -57,20 +57,34 @@ public:
   explicit GroundTruthLocalizationNode(const rclcpp::NodeOptions & options = rclcpp::NodeOptions())
   : rclcpp::Node("ground_truth_localization_node", options)
   {
-    std::cout << "GroundTruthLocalizationNode" << std::endl;
+    RCLCPP_INFO(this->get_logger(), "Initializing GroundTruthLocalizationNode");
 
-    this->declare_parameter("gz_parent_frame", "tray");
-    this->declare_parameter("gz_child_frame", "robot");
-    this->declare_parameter("ros_parent_frame", "map");
-    this->declare_parameter("ros_child_frame", "base_footprint");
-    this->declare_parameter("ros_odom_frame", "odom");
+    auto gz_parent_desc = rcl_interfaces::msg::ParameterDescriptor{};
+    gz_parent_desc.description = "The parent frame in Gazebo (e.g., world or map frame)";
+    this->declare_parameter("gz_parent_frame", "tray", gz_parent_desc);
+
+    auto gz_child_desc = rcl_interfaces::msg::ParameterDescriptor{};
+    gz_child_desc.description = "The child frame in Gazebo representing the robot";
+    this->declare_parameter("gz_child_frame", "robot", gz_child_desc);
+
+    auto ros_parent_desc = rcl_interfaces::msg::ParameterDescriptor{};
+    ros_parent_desc.description = "The parent frame in ROS (usually 'map')";
+    this->declare_parameter("ros_parent_frame", "map", ros_parent_desc);
+
+    auto ros_child_desc = rcl_interfaces::msg::ParameterDescriptor{};
+    ros_child_desc.description = "The child frame in ROS representing the robot (e.g., 'base_footprint')";
+    this->declare_parameter("ros_child_frame", "base_footprint", ros_child_desc);
+
+    auto ros_odom_desc = rcl_interfaces::msg::ParameterDescriptor{};
+    ros_odom_desc.description = "The odom frame in ROS. If provided, the node publishes map -> odom transform.";
+    this->declare_parameter("ros_odom_frame", "odom", ros_odom_desc);
 
     gz_parent_frame_ = this->get_parameter("gz_parent_frame").as_string();
     gz_child_frame_ = this->get_parameter("gz_child_frame").as_string();
     ros_parent_frame_ = this->get_parameter("ros_parent_frame").as_string();
     ros_child_frame_ = this->get_parameter("ros_child_frame").as_string();
     ros_odom_frame_ = this->get_parameter("ros_odom_frame").as_string();
-    skip_odom_frame_ = (ros_odom_frame_ != "");
+    publish_map_to_odom_ = (ros_odom_frame_ != "");
 
     // Initialize the transform broadcaster
     tf_broadcaster_ =
@@ -83,62 +97,57 @@ public:
     // subscribe to tf messages coming from gazebo
     sub_tf_ = this->create_subscription<tf2_msgs::msg::TFMessage>(
       "/tf_gt", 10,
-      [ = ](const tf2_msgs::msg::TFMessage::ConstSharedPtr & msgs) -> void
+      [this](const tf2_msgs::msg::TFMessage::ConstSharedPtr & msgs)
       {
         tf_cb(msgs);
       });
 
-    std::cout << "Searching for Gazebo Transform " << gz_child_frame_ << " -> " <<
-      gz_parent_frame_ << std::endl;
+    RCLCPP_INFO(this->get_logger(), "Searching for Gazebo Transform %s -> %s",
+      gz_child_frame_.c_str(), gz_parent_frame_.c_str());
   }
 
   void tf_cb(const tf2_msgs::msg::TFMessage::ConstSharedPtr & msgs)
   {
-    for (geometry_msgs::msg::TransformStamped Tbm : msgs->transforms) {
-      if (Tbm.header.frame_id == gz_parent_frame_) {
-        if (Tbm.child_frame_id == gz_child_frame_) {
-          if (skip_odom_frame_) {
-            // plan:
-            // get last tf from base_footprint -> odom
-            geometry_msgs::msg::TransformStamped Tbo;
+    for (const auto & Tbm : msgs->transforms) {
+      if (Tbm.header.frame_id == gz_parent_frame_ && Tbm.child_frame_id == gz_child_frame_) {
+        if (publish_map_to_odom_) {
+          // get last tf from base_footprint -> odom
+          geometry_msgs::msg::TransformStamped Tbo;
 
-            // Look up for the transformation between target_frame and turtle2 frames
-            // and send velocity commands for turtle2 to reach target_frame
-            try {
-              Tbo = tf_buffer_->lookupTransform(
-                ros_odom_frame_, ros_child_frame_,
-                tf2::TimePointZero);
-            } catch (const tf2::TransformException & ex) {
-              RCLCPP_INFO(
-                this->get_logger(), "Could not transform %s to %s: %s",
-                ros_child_frame_.c_str(), ros_odom_frame_.c_str(), ex.what());
-              return;
-            }
-
-            geometry_msgs::msg::TransformStamped Tom;
-            // Tom = Tbm * ~Tbo;
-            Tom.header.frame_id = ros_parent_frame_;
-            Tom.header.stamp = Tbo.header.stamp; // what time to use? I think it should be the odom time since we are correcting it
-            Tom.child_frame_id = ros_odom_frame_;
-
-            tf2::Transform Tbm_tf;
-            tf2::fromMsg(Tbm.transform, Tbm_tf);
-
-            tf2::Transform Tbo_tf;
-            tf2::fromMsg(Tbo.transform, Tbo_tf);
-
-            tf2::Transform Tom_tf = Tbm_tf * Tbo_tf.inverse();
-            tf2::toMsg(Tom_tf, Tom.transform);
-
-            // send T odom -> map as correction of odom only
-
-            tf_broadcaster_->sendTransform(Tom);
-          } else {
-            // if odom doesnt exist, send T base -> map
-            Tbm.header.frame_id = ros_parent_frame_;
-            Tbm.child_frame_id = ros_child_frame_;
-            tf_broadcaster_->sendTransform(Tbm);
+          try {
+            Tbo = tf_buffer_->lookupTransform(
+              ros_odom_frame_, ros_child_frame_,
+              tf2::TimePointZero);
+          } catch (const tf2::TransformException & ex) {
+            RCLCPP_WARN_THROTTLE(
+              this->get_logger(), *this->get_clock(), 1000,
+              "Could not transform %s to %s: %s",
+              ros_child_frame_.c_str(), ros_odom_frame_.c_str(), ex.what());
+            return;
           }
+
+          geometry_msgs::msg::TransformStamped Tom;
+          Tom.header.frame_id = ros_parent_frame_;
+          Tom.header.stamp = Tbm.header.stamp; // Use the ground truth time
+          Tom.child_frame_id = ros_odom_frame_;
+
+          tf2::Transform Tbm_tf;
+          tf2::fromMsg(Tbm.transform, Tbm_tf);
+
+          tf2::Transform Tbo_tf;
+          tf2::fromMsg(Tbo.transform, Tbo_tf);
+
+          tf2::Transform Tom_tf = Tbm_tf * Tbo_tf.inverse();
+          tf2::toMsg(Tom_tf, Tom.transform);
+
+          // send T odom -> map as correction of odom only
+          tf_broadcaster_->sendTransform(Tom);
+        } else {
+          // if odom doesnt exist, send T base -> map
+          geometry_msgs::msg::TransformStamped Tbm_ros = Tbm;
+          Tbm_ros.header.frame_id = ros_parent_frame_;
+          Tbm_ros.child_frame_id = ros_child_frame_;
+          tf_broadcaster_->sendTransform(Tbm_ros);
         }
       }
     }
@@ -152,7 +161,7 @@ public:
 
   // frame to skip
   std::string ros_odom_frame_;
-  bool skip_odom_frame_;
+  bool publish_map_to_odom_;
 
   // TF stuff
   std::unique_ptr<tf2_ros::TransformBroadcaster> tf_broadcaster_;
