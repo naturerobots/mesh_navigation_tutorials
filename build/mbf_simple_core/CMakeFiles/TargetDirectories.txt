@@ -1,9 +1,0 @@
-/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/build/mbf_simple_core/CMakeFiles/uninstall.dir
-/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/build/mbf_simple_core/CMakeFiles/mbf_simple_core_uninstall.dir
-/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/build/mbf_simple_core/CMakeFiles/test.dir
-/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/build/mbf_simple_core/CMakeFiles/edit_cache.dir
-/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/build/mbf_simple_core/CMakeFiles/rebuild_cache.dir
-/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/build/mbf_simple_core/CMakeFiles/list_install_components.dir
-/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/build/mbf_simple_core/CMakeFiles/install.dir
-/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/build/mbf_simple_core/CMakeFiles/install/local.dir
-/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/build/mbf_simple_core/CMakeFiles/install/strip.dir

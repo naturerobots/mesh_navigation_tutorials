@@ -1,0 +1,20 @@
+# ROS 2 build artifacts
+build/
+install/
+log/
+
+# Mesh data files
+*.h5
+
+# External dependencies (cloned via vcs)
+lvr2/
+mesh_navigation/
+mesh_tools/
+move_base_flex/
+
+# Python artifacts
+__pycache__/
+*.pyc
+
+# OS artifacts
+.DS_Store

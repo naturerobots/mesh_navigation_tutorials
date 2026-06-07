@@ -1,9 +1,0 @@
-<library path="rviz_mbf_plugins">
-  <class name="rviz_mbf_plugins/MbfGoalActions"
-         type="rviz_mbf_plugins::MbfGoalActionsPanel"
-         base_class_type="rviz_common::Panel">
-    <description>
-      A panel for controlling move base flex actions and visualizing their status.
-    </description>
-  </class>
-</library>

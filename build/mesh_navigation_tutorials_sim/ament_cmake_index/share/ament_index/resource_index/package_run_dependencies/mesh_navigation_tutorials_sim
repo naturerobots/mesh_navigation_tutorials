@@ -1,1 +1,0 @@
-rclcpp;geometry_msgs;tf2_ros;tf2_geometry_msgs;ros_gz_bridge;ros_gz_sim;xacro;ament_lint_auto;ament_cmake_copyright;ament_cmake_cppcheck;ament_cmake_pep257;ament_cmake_uncrustify

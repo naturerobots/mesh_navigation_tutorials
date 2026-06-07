@@ -1,1 +1,0 @@
-geometry_msgs;mesh_msgs_conversions;pluginlib;rclcpp;tf2_geometry_msgs;tf2_ros;tf2;visualization_msgs;std_srvs;assimp;ament_cmake_gtest

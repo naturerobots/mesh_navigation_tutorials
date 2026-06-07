@@ -1,6 +1,0 @@
-setup.py
-mesh_msgs/__init__.py
-mesh_msgs.egg-info/PKG-INFO
-mesh_msgs.egg-info/SOURCES.txt
-mesh_msgs.egg-info/dependency_links.txt
-mesh_msgs.egg-info/top_level.txt

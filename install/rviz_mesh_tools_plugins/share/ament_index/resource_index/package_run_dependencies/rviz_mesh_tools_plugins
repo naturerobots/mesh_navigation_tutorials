@@ -1,1 +1,0 @@
-rclcpp;lvr2;rviz_common;rviz_rendering;rviz_assimp_vendor;std_msgs;mesh_msgs;tf2_ros;pluginlib;message_filters;ocl-icd-opencl-dev;opencl-headers;freeimage;libqt5-core;libqt5-gui;libqt5-widgets;rviz_ogre_vendor
