@@ -42,18 +42,24 @@ def generate_launch_description():
     launch_args = [
         DeclareLaunchArgument(
             "mesh_map_path",
-            description="Path to the mesh file that defines the map."
-            "Allowed formats are our internal HDF5 format and all"
-            "standard mesh formats loadable by Assimp.",
+            description="Path to the mesh file that defines the map. "
+            "Supports HDF5 (.h5) and standard formats (e.g., .ply, .obj) via Assimp.",
         ),
         DeclareLaunchArgument(
             "mesh_map_working_path",
-            description="Path to the mesh file used by the mesh navigation "
-            "to store costs during operation. Only HDF5 formats are permitted.",
+            description="Path to the HDF5 file where mesh navigation stores operational costs. "
+            "Must be an HDF5 (.h5) file.",
+        ),
+        DeclareLaunchArgument(
+            "use_sim_time",
+            default_value="True",
+            description="Use simulation (Gazebo) clock if True.",
+            choices=["True", "False"],
         ),
     ]
     mesh_map_path = LaunchConfiguration("mesh_map_path")
     mesh_map_working_path = LaunchConfiguration("mesh_map_working_path")
+    use_sim_time = LaunchConfiguration("use_sim_time")
 
     mbf_mesh_nav_config = os.path.join(
         get_package_share_directory("mesh_navigation_tutorials"), "config", "mbf_mesh_nav.yaml"
@@ -70,7 +76,8 @@ def generate_launch_description():
             mbf_mesh_nav_config,
             {
                 "mesh_map.mesh_file": mesh_map_path,
-                "mesh_map.mesh_working_file": mesh_map_working_path
+                "mesh_map.mesh_working_file": mesh_map_working_path,
+                "use_sim_time": use_sim_time,
             }
         ]
     )

@@ -21,13 +21,20 @@ move_base_flex:
     controllers: ['mesh_controller']
     mesh_controller:
       type: 'mesh_controller/MeshController'
+      # Gain for the angular velocity. Higher values result in faster turning towards the path.
       ang_vel_factor: 7.0
+      # Gain for the linear velocity. 1.0 means the robot will try to drive at its maximum configured speed.
       lin_vel_factor: 1.0
 
+    # How long to wait for the controller to find a valid command before failing.
     controller_patience: 2.0
+    # Maximum number of times to retry the controller if it fails.
     controller_max_retries: 4
+    # Distance in meters to the goal to consider it reached.
     dist_tolerance: 0.2
+    # Angle in radians to the goal orientation to consider it reached.
     angle_tolerance: 0.8
+    # If the robot is stuck, it will ignore commands below this tolerance to avoid oscillations.
     cmd_vel_ignored_tolerance: 10.0
 
     mesh_map:

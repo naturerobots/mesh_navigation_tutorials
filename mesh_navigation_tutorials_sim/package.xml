@@ -3,12 +3,18 @@
 <package format="3">
   <name>mesh_navigation_tutorials_sim</name>
   <version>3.0.0</version>
-  <description>Tutorials for mobile robot navigation in 3D, using mesh maps.</description>
+  <description>
+    This package contains simulation environments and robot models for the mesh navigation tutorials. 
+    It provides Gazebo worlds, URDFs, and nodes to facilitate 3D navigation experiments in simulation.
+  </description>
   
   <maintainer email="matthias.holoch@naturerobots.com">Matthias Holoch</maintainer>
   <maintainer email="amock@uos.de">Alexander Mock</maintainer>
   
   <license>BSD-3-Clause</license>
+
+  <url type="website">https://naturerobots.github.io/mesh_navigation_docs/tutorials</url>
+  <url type="repository">https://github.com/naturerobots/mesh_navigation_tutorials</url>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 

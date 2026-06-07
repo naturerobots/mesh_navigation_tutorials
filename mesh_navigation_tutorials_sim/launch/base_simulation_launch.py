@@ -51,16 +51,15 @@ def generate_launch_description():
     # Launch arguments
     launch_args = [DeclareLaunchArgument(
             "world_pkg",
-            description="Package of the world to simulate",
+            description="The name of the ROS 2 package containing the simulation world files.",
         ),
         DeclareLaunchArgument(
             "world_name",
-            description="Name of the world to simulate"
-            + '(see mesh_navigation_tutorials\' "worlds" directory).'
+            description="The name of the SDF world file to load (without the .sdf extension)."
         ),
         DeclareLaunchArgument(
             "start_gazebo_gui",
-            description="Start Gazebo GUI",
+            description="Whether to start the Gazebo user interface (GUI). Set to 'False' for headless operation.",
             default_value="True",
             choices=["True", "False"],
         ),
