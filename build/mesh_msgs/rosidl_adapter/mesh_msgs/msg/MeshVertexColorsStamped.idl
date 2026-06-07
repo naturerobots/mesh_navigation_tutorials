@@ -1,0 +1,20 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from mesh_msgs/msg/MeshVertexColorsStamped.msg
+// generated code does not contain a copyright notice
+
+#include "mesh_msgs/msg/MeshVertexColors.idl"
+#include "std_msgs/msg/Header.idl"
+
+module mesh_msgs {
+  module msg {
+    @verbatim (language="comment", text=
+      "Mesh Attribute Message")
+    struct MeshVertexColorsStamped {
+      std_msgs::msg::Header header;
+
+      string uuid;
+
+      mesh_msgs::msg::MeshVertexColors mesh_vertex_colors;
+    };
+  };
+};

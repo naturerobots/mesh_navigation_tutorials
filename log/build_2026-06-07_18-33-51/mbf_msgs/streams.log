@@ -1,0 +1,58 @@
+[0.025s] Invoking command in '/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/build/mbf_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy CONDA_PROMPT_MODIFIER=(base) DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/move_base_flex/mbf_msgs -DCMAKE_INSTALL_PREFIX=/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mbf_msgs
+[0.087s] -- The C compiler identification is GNU 13.3.0
+[0.145s] -- The CXX compiler identification is GNU 13.3.0
+[0.164s] -- Detecting C compiler ABI info
+[0.318s] -- Detecting C compiler ABI info - done
+[0.332s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.332s] -- Detecting C compile features
+[0.332s] -- Detecting C compile features - done
+[0.345s] -- Detecting CXX compiler ABI info
+[0.505s] -- Detecting CXX compiler ABI info - done
+[0.518s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.518s] -- Detecting CXX compile features
+[0.518s] -- Detecting CXX compile features - done
+[0.530s] -- Found ament_cmake: 2.5.5 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.633s] -- Found Python3: /home/haris/miniconda3/bin/python3 (found version "3.13.13") found components: Interpreter 
+[0.796s] -- Found rosidl_default_generators: 1.6.0 (/opt/ros/jazzy/share/rosidl_default_generators/cmake)
+[0.813s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.917s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.012s] -- Found rosidl_adapter: 4.6.7 (/opt/ros/jazzy/share/rosidl_adapter/cmake)
+[1.019s] -- Found std_msgs: 5.3.6 (/opt/ros/jazzy/share/std_msgs/cmake)
+[1.066s] -- Found geometry_msgs: 5.3.6 (/opt/ros/jazzy/share/geometry_msgs/cmake)
+[1.087s] -- Found nav_msgs: 5.3.6 (/opt/ros/jazzy/share/nav_msgs/cmake)
+[1.333s] [31mCMake Error at /opt/ros/jazzy/share/rosidl_adapter/cmake/rosidl_adapt_interfaces.cmake:57 (message):
+[1.333s]   execute_process(/home/haris/miniconda3/bin/python3 -m rosidl_adapter
+[1.334s]   --package-name mbf_msgs --arguments-file
+[1.334s]   /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/build/mbf_msgs/rosidl_adapter__arguments__mbf_msgs.json
+[1.334s]   --output-dir
+[1.334s]   /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/build/mbf_msgs/rosidl_adapter/mbf_msgs
+[1.335s]   --output-file
+[1.335s]   /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/build/mbf_msgs/rosidl_adapter/mbf_msgs.idls)
+[1.335s]   returned error code 1:
+[1.335s] 
+[1.336s]   Traceback (most recent call last):
+[1.336s] 
+[1.336s]     File "<frozen runpy>", line 198, in _run_module_as_main
+[1.337s]     File "<frozen runpy>", line 88, in _run_code
+[1.337s]     File "/opt/ros/jazzy/lib/python3.12/site-packages/rosidl_adapter/__main__.py", line 19, in <module>
+[1.337s]       sys.exit(main())
+[1.337s]                ~~~~^^
+[1.338s]     File "/opt/ros/jazzy/lib/python3.12/site-packages/rosidl_adapter/main.py", line 53, in main
+[1.338s]       abs_idl_file = convert_to_idl(
+[1.338s]           pathlib.Path(basepath), args.package_name,
+[1.338s]           pathlib.Path(relative_path), output_dir)
+[1.339s]     File "/opt/ros/jazzy/lib/python3.12/site-packages/rosidl_adapter/__init__.py", line 28, in convert_to_idl
+[1.339s]       from rosidl_adapter.action import convert_action_to_idl
+[1.339s]     File "/opt/ros/jazzy/lib/python3.12/site-packages/rosidl_adapter/action/__init__.py", line 16, in <module>
+[1.339s]       from rosidl_adapter.resource import expand_template
+[1.340s]     File "/opt/ros/jazzy/lib/python3.12/site-packages/rosidl_adapter/resource/__init__.py", line 19, in <module>
+[1.340s]       import em
+[1.340s] 
+[1.340s]   ModuleNotFoundError: No module named 'em'
+[1.341s] 
+[1.341s] Call Stack (most recent call first):
+[1.341s]   /opt/ros/jazzy/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:132 (rosidl_adapt_interfaces)
+[1.341s]   CMakeLists.txt:18 (rosidl_generate_interfaces)
+[1.342s] 
+[1.342s] [0m
+[1.342s] -- Configuring incomplete, errors occurred!

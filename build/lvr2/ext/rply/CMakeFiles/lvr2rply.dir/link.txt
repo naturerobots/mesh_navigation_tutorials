@@ -1,0 +1,1 @@
+/usr/bin/cc -fPIC -O3 -DNDEBUG -shared -Wl,-soname,liblvr2rply.so.25 -o ../../lib/liblvr2rply.so.25.2.3 CMakeFiles/lvr2rply.dir/rply.c.o 

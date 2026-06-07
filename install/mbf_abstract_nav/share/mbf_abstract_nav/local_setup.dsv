@@ -1,0 +1,3 @@
+source;share/mbf_abstract_nav/environment/ament_prefix_path.sh
+source;share/mbf_abstract_nav/environment/library_path.sh
+source;share/mbf_abstract_nav/environment/path.sh

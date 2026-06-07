@@ -1,0 +1,26 @@
+{
+  "type_description_msg": {
+    "type_description": {
+      "type_name": "mesh_msgs/srv/GetLabeledClusters_Request",
+      "fields": [
+        {
+          "name": "uuid",
+          "type": {
+            "type_id": 17,
+            "capacity": 0,
+            "string_capacity": 0,
+            "nested_type_name": ""
+          },
+          "default_value": ""
+        }
+      ]
+    },
+    "referenced_type_descriptions": []
+  },
+  "type_hashes": [
+    {
+      "type_name": "mesh_msgs/srv/GetLabeledClusters_Request",
+      "hash_string": "RIHS01_bd4fedda4dc3e2368d766b43c164ca65f577599546710350b7de8f10f8f4a9dc"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+source;share/mbf_mesh_nav/hook/cmake_prefix_path.ps1
+source;share/mbf_mesh_nav/hook/cmake_prefix_path.dsv
+source;share/mbf_mesh_nav/hook/cmake_prefix_path.sh
+source;share/mbf_mesh_nav/hook/ld_library_path_lib.ps1
+source;share/mbf_mesh_nav/hook/ld_library_path_lib.dsv
+source;share/mbf_mesh_nav/hook/ld_library_path_lib.sh
+source;share/mbf_mesh_nav/local_setup.bash
+source;share/mbf_mesh_nav/local_setup.dsv
+source;share/mbf_mesh_nav/local_setup.ps1
+source;share/mbf_mesh_nav/local_setup.sh
+source;share/mbf_mesh_nav/local_setup.zsh

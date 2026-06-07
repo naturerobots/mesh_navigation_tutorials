@@ -1,0 +1,85 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from mbf_msgs/srv/FindValidPose.srv
+// generated code does not contain a copyright notice
+
+#include "geometry_msgs/msg/PoseStamped.idl"
+
+module mbf_msgs {
+  module srv {
+    module FindValidPose_Request_Constants {
+      const uint8 LOCAL_COSTMAP = 1;
+      const uint8 GLOBAL_COSTMAP = 2;
+    };
+    @verbatim (language="comment", text=
+      "Find the closest free pose to the given one, within the given linear and angular tolerances." "\n"
+      "" "\n"
+      "A pose is considered free if the robot footprint there is entirely inside the map and neither in" "\n"
+      "collision nor unknown space." "\n"
+      "" "\n"
+      "If no free pose can be found, but we find one partially in unknown space, or partially outside the map," "\n"
+      "we will return it and set state to the corresponding option (unknown space takes precedence)." "\n"
+      "Otherwise state will be set to LETHAL." "\n"
+      "" "\n"
+      "You can also instruct this service to use current robot's pose, instead of providing one.")
+    struct FindValidPose_Request {
+      @verbatim (language="comment", text=
+        "the starting pose from which we start the search")
+      geometry_msgs::msg::PoseStamped pose;
+
+      @verbatim (language="comment", text=
+        "minimum distance allowed to the closest obstacle")
+      float safety_dist;
+
+      @verbatim (language="comment", text=
+        "maximum distance we can deviate from the given pose during the search")
+      float dist_tolerance;
+
+      @verbatim (language="comment", text=
+        "maximum angle we can rotate the given pose during the search")
+      float angle_tolerance;
+
+      @verbatim (language="comment", text=
+        "costmap in which to check the pose")
+      uint8 costmap;
+
+      @verbatim (language="comment", text=
+        "check current robot pose instead (ignores pose field)")
+      boolean current_pose;
+
+      @verbatim (language="comment", text=
+        "include footprint padding when checking cost; note that safety distance" "\n"
+        "will be measured from the padded footprint")
+      boolean use_padded_fp;
+    };
+    module FindValidPose_Response_Constants {
+      @verbatim (language="comment", text=
+        "found pose is completely in traversable space")
+      const uint8 FREE = 0;
+      @verbatim (language="comment", text=
+        "found pose is partially in inscribed space")
+      const uint8 INSCRIBED = 1;
+      @verbatim (language="comment", text=
+        "found pose is partially in collision")
+      const uint8 LETHAL = 2;
+      @verbatim (language="comment", text=
+        "found pose is partially in unknown space")
+      const uint8 UNKNOWN = 3;
+      @verbatim (language="comment", text=
+        "found pose is partially outside the map")
+      const uint8 OUTSIDE = 4;
+    };
+    struct FindValidPose_Response {
+      @verbatim (language="comment", text=
+        "found pose's state: FREE, INSCRIBED, LETHAL, UNKNOWN or OUTSIDE")
+      uint8 state;
+
+      @verbatim (language="comment", text=
+        "found pose's cost (sum of costs over all cells covered by the footprint)")
+      uint32 cost;
+
+      @verbatim (language="comment", text=
+        "the pose found (filled only if state is not set to LETHAL)")
+      geometry_msgs::msg::PoseStamped pose;
+    };
+  };
+};

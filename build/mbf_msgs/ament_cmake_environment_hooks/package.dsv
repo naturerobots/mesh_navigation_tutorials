@@ -1,0 +1,4 @@
+source;share/mbf_msgs/local_setup.bash
+source;share/mbf_msgs/local_setup.dsv
+source;share/mbf_msgs/local_setup.sh
+source;share/mbf_msgs/local_setup.zsh

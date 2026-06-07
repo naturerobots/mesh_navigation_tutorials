@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="wheel">
+    <xacro:macro name="wheel" params="name parent *joint_pose">
+        <link name="${name}_link">
+
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 ${M_PI/2}" />
+                <geometry>
+                    <mesh filename="package://mesh_navigation_tutorials_sim/meshes/wheel.stl"/>
+                </geometry>
+                <material name="wheelcolor" >
+                    <color rgba="0.1 0.1 0.1 1" />
+                </material>
+            </visual>
+
+            <collision>
+                <origin xyz="0 0 0" rpy="${M_PI/2} 0 0" />
+                <geometry>
+                    <cylinder length="${wheel_thickness}" radius="${wheel_radius}"/>
+                </geometry>
+            </collision>
+
+            <xacro:cylinder_inertial_with_origin radius="${wheel_radius}" length="${wheel_thickness}" mass="${wheel_mass}">
+                <origin xyz="0 0 0" rpy="${M_PI/2} 0 0"/>
+            </xacro:cylinder_inertial_with_origin>
+        </link>
+
+        <gazebo reference="${name}_link">
+            <mu1 value="1.0"/>
+            <mu2 value="1.0"/>
+            <!-- <kp value="10000000.0" />
+            <kd value="1.0" /> -->
+            <fdir1 value="1 0 0"/>
+            <material>Gazebo/DarkGrey</material>
+        </gazebo>
+
+        <joint name="${name}" type="continuous">
+            <parent link="${parent}"/>
+            <child link="${name}_link"/>
+            <xacro:insert_block name="joint_pose"/>
+            <axis xyz="0 1 0" rpy="0 0 0" />
+        </joint>
+
+    </xacro:macro>
+</robot>

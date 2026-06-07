@@ -1,0 +1,13 @@
+[33mCMake Warning (dev) at ext/spdmon/cmake/cpplint.cmake:24 (find_package):
+  Policy CMP0148 is not set: The FindPythonInterp and FindPythonLibs modules
+  are removed.  Run "cmake --help-policy CMP0148" for policy details.  Use
+  the cmake_policy command to set the policy and suppress this warning.
+
+Call Stack (most recent call first):
+  ext/spdmon/CMakeLists.txt:23 (include)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+[0m
+[33mCMake Warning at CMakeLists.txt:920 (message):
+  Could not find Doxygen.  You will not be able to build the documentation.
+
+[0m

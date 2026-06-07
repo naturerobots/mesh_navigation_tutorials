@@ -1,0 +1,8 @@
+source;share/mesh_navigation_tutorials/hook/cmake_prefix_path.ps1
+source;share/mesh_navigation_tutorials/hook/cmake_prefix_path.dsv
+source;share/mesh_navigation_tutorials/hook/cmake_prefix_path.sh
+source;share/mesh_navigation_tutorials/local_setup.bash
+source;share/mesh_navigation_tutorials/local_setup.dsv
+source;share/mesh_navigation_tutorials/local_setup.ps1
+source;share/mesh_navigation_tutorials/local_setup.sh
+source;share/mesh_navigation_tutorials/local_setup.zsh

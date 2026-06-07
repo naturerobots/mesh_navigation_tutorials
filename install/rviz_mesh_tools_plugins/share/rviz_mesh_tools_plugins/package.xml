@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>rviz_mesh_tools_plugins</name>
+  <description>
+    RViz display types and tools for the mesh_msgs package.
+  </description>
+  <version>2.1.1</version>
+  
+  <maintainer email="alexander.mock@naturerobots.com">Alexander Mock</maintainer>
+  <license>BSD-3-Clause</license>
+  
+  <url>http://github.com/naturerobots/mesh_tools</url>
+  <author email="alexander.mock@naturerobots.com">Alexander Mock</author>
+  <author email="jubraun@uos.de">Julian Braun</author>
+  <author email="lrabius@uos.de">Leon Rabius</author>
+  <author email="spuetz@uos.de">Sebastian Pütz</author>
+  <author email="krschmidt@uos.de">Kristin Schmidt</author>
+  <author email="jvogtherr@uos.de">Jan Philipp Vogtherr</author>
+  <author email="malte@klpiening.de">Malte kleine Piening</author>
+  
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  
+  <build_depend>qtbase5-dev</build_depend>
+  <build_depend>rviz_ogre_vendor</build_depend>
+
+  <depend>rclcpp</depend>
+  <depend>lvr2</depend>
+  <depend>rviz_common</depend>
+  <depend>rviz_rendering</depend>
+  <depend>rviz_assimp_vendor</depend>
+  <depend>std_msgs</depend>
+  <depend>mesh_msgs</depend>
+  <depend>tf2_ros</depend>
+  <depend>pluginlib</depend>
+  <depend>message_filters</depend>
+  <depend>ocl-icd-opencl-dev</depend>
+  <depend>opencl-headers</depend>
+  <depend>freeimage</depend>
+  
+  <exec_depend>libqt5-core</exec_depend>
+  <exec_depend>libqt5-gui</exec_depend>
+  <exec_depend>libqt5-widgets</exec_depend>
+  <exec_depend>rviz_ogre_vendor</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

@@ -1,0 +1,11 @@
+source;share/mesh_map/hook/cmake_prefix_path.ps1
+source;share/mesh_map/hook/cmake_prefix_path.dsv
+source;share/mesh_map/hook/cmake_prefix_path.sh
+source;share/mesh_map/hook/ld_library_path_lib.ps1
+source;share/mesh_map/hook/ld_library_path_lib.dsv
+source;share/mesh_map/hook/ld_library_path_lib.sh
+source;share/mesh_map/local_setup.bash
+source;share/mesh_map/local_setup.dsv
+source;share/mesh_map/local_setup.ps1
+source;share/mesh_map/local_setup.sh
+source;share/mesh_map/local_setup.zsh

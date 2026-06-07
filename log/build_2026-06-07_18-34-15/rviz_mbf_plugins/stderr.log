@@ -1,0 +1,19 @@
+[33mCMake Warning at CMakeLists.txt:28 (add_library):
+  Cannot generate a safe runtime search path for target rviz_mbf_plugins
+  because files in some directories may conflict with libraries in implicit
+  directories:
+
+    runtime library [libz.so.1] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/haris/miniconda3/lib
+    runtime library [libX11.so.6] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/haris/miniconda3/lib
+
+  Some of these libraries may not be found correctly.
+
+[0m
+[33mCMake Warning:
+  Manually-specified variables were not used by the project:
+
+    PYTHON_EXECUTABLE
+
+[0m

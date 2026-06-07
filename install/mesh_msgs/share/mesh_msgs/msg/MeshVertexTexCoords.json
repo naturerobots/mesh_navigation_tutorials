@@ -1,0 +1,36 @@
+{
+  "type_description_msg": {
+    "type_description": {
+      "type_name": "mesh_msgs/msg/MeshVertexTexCoords",
+      "fields": [
+        {
+          "name": "u",
+          "type": {
+            "type_id": 10,
+            "capacity": 0,
+            "string_capacity": 0,
+            "nested_type_name": ""
+          },
+          "default_value": ""
+        },
+        {
+          "name": "v",
+          "type": {
+            "type_id": 10,
+            "capacity": 0,
+            "string_capacity": 0,
+            "nested_type_name": ""
+          },
+          "default_value": ""
+        }
+      ]
+    },
+    "referenced_type_descriptions": []
+  },
+  "type_hashes": [
+    {
+      "type_name": "mesh_msgs/msg/MeshVertexTexCoords",
+      "hash_string": "RIHS01_946d386a8de8271acc421fa8d2d1f3127e2b416c4a988144e29515c4ba77c85b"
+    }
+  ]
+}

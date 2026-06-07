@@ -1,0 +1,54 @@
+// generated from rosidl_adapter/resource/action.idl.em
+// with input from mbf_msgs/action/Recovery.action
+// generated code does not contain a copyright notice
+
+
+module mbf_msgs {
+  module action {
+    @verbatim (language="comment", text=
+      "Run one of the recovery behavior listed on recovery_behaviors parameter")
+    struct Recovery_Goal {
+      string behavior;
+
+      @verbatim (language="comment", text=
+        "use different slots for concurrency")
+      uint8 concurrency_slot;
+    };
+    module Recovery_Result_Constants {
+      @verbatim (language="comment", text=
+        "Predefined success codes:")
+      const uint8 SUCCESS = 0;
+      @verbatim (language="comment", text=
+        "Possible server codes:")
+      const uint8 FAILURE = 150;
+      const uint8 CANCELED = 151;
+      const uint8 PAT_EXCEEDED = 152;
+      const uint8 TF_ERROR = 153;
+      const uint8 NOT_INITIALIZED = 154;
+      const uint8 INVALID_PLUGIN = 155;
+      const uint8 INTERNAL_ERROR = 156;
+      @verbatim (language="comment", text=
+        "The recovery behaviour execution has been stopped rigorously")
+      const uint8 STOPPED = 157;
+      @verbatim (language="comment", text=
+        "Further execution would lead to a collision")
+      const uint8 IMPASSABLE = 158;
+      const uint8 ERROR_RANGE_START = 150;
+      const uint8 ERROR_RANGE_END = 199;
+      @verbatim (language="comment", text=
+        "171..199 are reserved as plugin specific errors:")
+      const uint8 PLUGIN_ERROR_RANGE_START = 171;
+      const uint8 PLUGIN_ERROR_RANGE_END = 199;
+    };
+    struct Recovery_Result {
+      uint32 outcome;
+
+      string message;
+
+      string used_plugin;
+    };
+    struct Recovery_Feedback {
+      uint8 structure_needs_at_least_one_member;
+    };
+  };
+};

@@ -1,0 +1,26 @@
+{
+  "type_description_msg": {
+    "type_description": {
+      "type_name": "mesh_msgs/srv/GetVertexCostLayers_Request",
+      "fields": [
+        {
+          "name": "uuid",
+          "type": {
+            "type_id": 17,
+            "capacity": 0,
+            "string_capacity": 0,
+            "nested_type_name": ""
+          },
+          "default_value": ""
+        }
+      ]
+    },
+    "referenced_type_descriptions": []
+  },
+  "type_hashes": [
+    {
+      "type_name": "mesh_msgs/srv/GetVertexCostLayers_Request",
+      "hash_string": "RIHS01_c811d3f2b1d4e32e1caff393566f37944ec4b4203e7dae4aa685321093e4df8e"
+    }
+  ]
+}

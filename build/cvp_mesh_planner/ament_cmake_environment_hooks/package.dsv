@@ -1,0 +1,4 @@
+source;share/cvp_mesh_planner/local_setup.bash
+source;share/cvp_mesh_planner/local_setup.dsv
+source;share/cvp_mesh_planner/local_setup.sh
+source;share/cvp_mesh_planner/local_setup.zsh

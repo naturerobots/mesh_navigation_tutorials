@@ -1,0 +1,17 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from mesh_msgs/srv/GetUUIDs.srv
+// generated code does not contain a copyright notice
+
+
+module mesh_msgs {
+  module srv {
+    @verbatim (language="comment", text=
+      "uuids of all currently available meshes")
+    struct GetUUIDs_Request {
+      uint8 structure_needs_at_least_one_member;
+    };
+    struct GetUUIDs_Response {
+      sequence<string> uuids;
+    };
+  };
+};

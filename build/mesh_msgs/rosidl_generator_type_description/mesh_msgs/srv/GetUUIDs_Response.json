@@ -1,0 +1,26 @@
+{
+  "type_description_msg": {
+    "type_description": {
+      "type_name": "mesh_msgs/srv/GetUUIDs_Response",
+      "fields": [
+        {
+          "name": "uuids",
+          "type": {
+            "type_id": 161,
+            "capacity": 0,
+            "string_capacity": 0,
+            "nested_type_name": ""
+          },
+          "default_value": ""
+        }
+      ]
+    },
+    "referenced_type_descriptions": []
+  },
+  "type_hashes": [
+    {
+      "type_name": "mesh_msgs/srv/GetUUIDs_Response",
+      "hash_string": "RIHS01_e391d3281f300d72503b5f9c83e6ce75b1e8d420661cd362c75d421be41265d9"
+    }
+  ]
+}

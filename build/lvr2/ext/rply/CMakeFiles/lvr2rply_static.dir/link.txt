@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/liblvr2rply_static.a CMakeFiles/lvr2rply_static.dir/rply.c.o
+/usr/bin/ranlib ../../lib/liblvr2rply_static.a

@@ -1,0 +1,95 @@
+// generated from rosidl_adapter/resource/action.idl.em
+// with input from mbf_msgs/action/GetPath.action
+// generated code does not contain a copyright notice
+
+#include "geometry_msgs/msg/PoseStamped.idl"
+#include "nav_msgs/msg/Path.idl"
+
+module mbf_msgs {
+  module action {
+    @verbatim (language="comment", text=
+      "Get a path from start_pose or current position to the target pose")
+    struct GetPath_Goal {
+      @verbatim (language="comment", text=
+        "Use start_pose or current position as the beginning of the path")
+      boolean use_start_pose;
+
+      @verbatim (language="comment", text=
+        "The start pose for the path; optional, used if use_start_pose is true")
+      geometry_msgs::msg::PoseStamped start_pose;
+
+      @verbatim (language="comment", text=
+        "The pose to achieve with the path")
+      geometry_msgs::msg::PoseStamped target_pose;
+
+      @verbatim (language="comment", text=
+        "If the goal is obstructed, how many meters the planner can relax the constraint in x and y before failing")
+      double tolerance;
+
+      @verbatim (language="comment", text=
+        "Planner to use; defaults to the first one specified on \"planners\" parameter")
+      string planner;
+
+      @verbatim (language="comment", text=
+        "use different slots for concurrency")
+      uint8 concurrency_slot;
+    };
+    module GetPath_Result_Constants {
+      @verbatim (language="comment", text=
+        "Predefined success codes:")
+      const uint8 SUCCESS = 0;
+      @verbatim (language="comment", text=
+        "1..9 are reserved as plugin specific non-error results" "\n"        "Possible error codes:" "\n"        "Unspecified failure, only used for old, non-mfb_core based plugins")
+      const uint8 FAILURE = 50;
+      @verbatim (language="comment", text=
+        "The action has been canceled by a action client")
+      const uint8 CANCELED = 51;
+      @verbatim (language="comment", text=
+        "The start pose is inconsistent (e.g. frame is not valid)")
+      const uint8 INVALID_START = 52;
+      @verbatim (language="comment", text=
+        "The goal pose is inconsistent (e.g. frame is not valid)")
+      const uint8 INVALID_GOAL = 53;
+      @verbatim (language="comment", text=
+        "The start pose is in collision")
+      const uint8 BLOCKED_START = 54;
+      @verbatim (language="comment", text=
+        "The goal pose is in collision")
+      const uint8 BLOCKED_GOAL = 55;
+      const uint8 NO_PATH_FOUND = 56;
+      const uint8 PAT_EXCEEDED = 57;
+      const uint8 EMPTY_PATH = 58;
+      const uint8 TF_ERROR = 59;
+      const uint8 NOT_INITIALIZED = 60;
+      const uint8 INVALID_PLUGIN = 61;
+      const uint8 INTERNAL_ERROR = 62;
+      @verbatim (language="comment", text=
+        "The start and / or the goal are outside the map")
+      const uint8 OUT_OF_MAP = 63;
+      @verbatim (language="comment", text=
+        "The map is not available or not running properly")
+      const uint8 MAP_ERROR = 64;
+      @verbatim (language="comment", text=
+        "The planner execution has been stopped rigorously")
+      const uint8 STOPPED = 65;
+      const uint8 ERROR_RANGE_START = 50;
+      const uint8 ERROR_RANGE_END = 99;
+      @verbatim (language="comment", text=
+        "71..99 are reserved as plugin specific errors:")
+      const uint8 PLUGIN_ERROR_RANGE_START = 71;
+      const uint8 PLUGIN_ERROR_RANGE_END = 99;
+    };
+    struct GetPath_Result {
+      uint32 outcome;
+
+      string message;
+
+      nav_msgs::msg::Path path;
+
+      double cost;
+    };
+    struct GetPath_Feedback {
+      uint8 structure_needs_at_least_one_member;
+    };
+  };
+};

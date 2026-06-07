@@ -1,0 +1,140 @@
+[33mCMake Warning at CMakeLists.txt:89 (add_library):
+  Cannot generate a safe runtime search path for target
+  rviz_mesh_tools_plugins because files in some directories may conflict with
+  libraries in implicit directories:
+
+    runtime library [libcrypto.so.3] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/haris/miniconda3/lib
+    runtime library [libcurl.so.4] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/haris/miniconda3/lib
+    runtime library [libz.so.1] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/haris/miniconda3/lib
+    runtime library [liblz4.so.1] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/haris/miniconda3/lib
+    runtime library [libgomp.so.1] in /usr/lib/gcc/x86_64-linux-gnu/13 may be hidden by files in:
+      /home/haris/miniconda3/lib
+    runtime library [libX11.so.6] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/haris/miniconda3/lib
+
+  Some of these libraries may not be found correctly.
+
+[0m
+[33mCMake Warning:
+  Manually-specified variables were not used by the project:
+
+    PYTHON_EXECUTABLE
+
+[0m
+[01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/src/RvizFileProperty.cpp:[m[K In member function ‘[01m[Kvirtual QWidget* rviz_common::properties::FileProperty::[01;32m[KcreateEditor[m[K(QWidget*, const QStyleOptionViewItem&)[m[K’:
+[01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/src/RvizFileProperty.cpp:68:12:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kparent[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   68 |   [01;35m[KQWidget* parent[m[K,
+      |   [01;35m[K~~~~~~~~~^~~~~~[m[K
+In file included from [01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/include/rviz_mesh_tools_plugins/MeshPoseTool.hpp:48[m[K,
+                 from [01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/include/rviz_mesh_tools_plugins/MeshGoalTool.hpp:48[m[K,
+                 from [01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/src/MeshGoalTool.cpp:46[m[K:
+[01m[K/opt/ros/jazzy/opt/rviz_ogre_vendor/include/OGRE/OgreVector3.h:2:62:[m[K [01;36m[Knote: [m[K‘[01m[K#pragma message: /opt/ros/jazzy/opt/rviz_ogre_vendor/include/OGRE/OgreVector3.h is deprecated, migrate to Ogre.h[m[K’
+    2 | #pragma message( __FILE__ " is deprecated, migrate to Ogre.h"[01;36m[K)[m[K
+      |                                                              [01;36m[K^[m[K
+In file included from [01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/include/rviz_mesh_tools_plugins/MeshPoseTool.hpp:48[m[K,
+                 from [01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/include/rviz_mesh_tools_plugins/MeshPoseGuessTool.hpp:48[m[K,
+                 from [01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/src/MeshPoseGuessTool.cpp:46[m[K:
+[01m[K/opt/ros/jazzy/opt/rviz_ogre_vendor/include/OGRE/OgreVector3.h:2:62:[m[K [01;36m[Knote: [m[K‘[01m[K#pragma message: /opt/ros/jazzy/opt/rviz_ogre_vendor/include/OGRE/OgreVector3.h is deprecated, migrate to Ogre.h[m[K’
+    2 | #pragma message( __FILE__ " is deprecated, migrate to Ogre.h"[01;36m[K)[m[K
+      |                                                              [01;36m[K^[m[K
+In file included from [01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/include/rviz_mesh_tools_plugins/MeshPoseTool.hpp:48[m[K,
+                 from [01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/src/MeshPoseTool.cpp:73[m[K:
+[01m[K/opt/ros/jazzy/opt/rviz_ogre_vendor/include/OGRE/OgreVector3.h:2:62:[m[K [01;36m[Knote: [m[K‘[01m[K#pragma message: /opt/ros/jazzy/opt/rviz_ogre_vendor/include/OGRE/OgreVector3.h is deprecated, migrate to Ogre.h[m[K’
+    2 | #pragma message( __FILE__ " is deprecated, migrate to Ogre.h"[01;36m[K)[m[K
+      |                                                              [01;36m[K^[m[K
+[01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/src/ClusterLabelVisual.cpp:[m[K In constructor ‘[01m[Krviz_mesh_tools_plugins::ClusterLabelVisual::[01;32m[KClusterLabelVisual[m[K(rviz_common::DisplayContext*, std::string, std::shared_ptr<rviz_mesh_tools_plugins::Geometry>)[m[K’:
+[01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/src/ClusterLabelVisual.cpp:99:19:[m[K [01;35m[Kwarning: [m[K‘[01m[Kbool Ogre::SharedPtr<T>::[01;32m[KisNull[m[K() const [35m[K[with T = Ogre::Mesh][m[K[m[K’ is deprecated [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+   99 |   if([01;35m[Km_mesh.isNull()[m[K && geometry)
+      |      [01;35m[K~~~~~~~~~~~~~^~[m[K
+In file included from [01m[K/opt/ros/jazzy/opt/rviz_ogre_vendor/include/OGRE/OgreHardwareVertexBuffer.h:34[m[K,
+                 from [01m[K/opt/ros/jazzy/opt/rviz_ogre_vendor/include/OGRE/OgrePose.h:38[m[K,
+                 from [01m[K/opt/ros/jazzy/opt/rviz_ogre_vendor/include/OGRE/OgreAnimationTrack.h:36[m[K,
+                 from [01m[K/opt/ros/jazzy/opt/rviz_ogre_vendor/include/OGRE/OgreAnimation.h:34[m[K,
+                 from [01m[K/opt/ros/jazzy/opt/rviz_ogre_vendor/include/OGRE/OgreMesh.h:41[m[K,
+                 from [01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/include/rviz_mesh_tools_plugins/ClusterLabelVisual.hpp:61[m[K,
+                 from [01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/src/ClusterLabelVisual.cpp:48[m[K:
+[01m[K/opt/ros/jazzy/opt/rviz_ogre_vendor/include/OGRE/OgreSharedPtr.h:91:30:[m[K [01;36m[Knote: [m[Kdeclared here
+   91 |         OGRE_DEPRECATED bool [01;36m[KisNull[m[K(void) const { return !shared_ptr<T>::operator bool(); }
+      |                              [01;36m[K^~~~~~[m[K
+[01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/src/ClusterLabelVisual.cpp:123:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  123 |     for (int i = 0; [01;35m[Ki < m_mesh->sharedVertexData->vertexCount[m[K; i++)
+      |                     [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/src/ClusterLabelVisual.cpp:155:20:[m[K [01;35m[Kwarning: [m[K‘[01m[Kbool Ogre::SharedPtr<T>::[01;32m[KisNull[m[K() const [35m[K[with T = Ogre::Mesh][m[K[m[K’ is deprecated [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+  155 |   if(![01;35m[Km_mesh.isNull()[m[K)
+      |       [01;35m[K~~~~~~~~~~~~~^~[m[K
+[01m[K/opt/ros/jazzy/opt/rviz_ogre_vendor/include/OGRE/OgreSharedPtr.h:91:30:[m[K [01;36m[Knote: [m[Kdeclared here
+   91 |         OGRE_DEPRECATED bool [01;36m[KisNull[m[K(void) const { return !shared_ptr<T>::operator bool(); }
+      |                              [01;36m[K^~~~~~[m[K
+[01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/src/ClusterLabelVisual.cpp:163:25:[m[K [01;35m[Kwarning: [m[K‘[01m[Kbool Ogre::SharedPtr<T>::[01;32m[KisNull[m[K() const [35m[K[with T = Ogre::Material][m[K[m[K’ is deprecated [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+  163 |     if([01;35m[Km_material.isNull()[m[K)
+      |        [01;35m[K~~~~~~~~~~~~~~~~~^~[m[K
+[01m[K/opt/ros/jazzy/opt/rviz_ogre_vendor/include/OGRE/OgreSharedPtr.h:91:30:[m[K [01;36m[Knote: [m[Kdeclared here
+   91 |         OGRE_DEPRECATED bool [01;36m[KisNull[m[K(void) const { return !shared_ptr<T>::operator bool(); }
+      |                              [01;36m[K^~~~~~[m[K
+[01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/src/ClusterLabelVisual.cpp:[m[K In destructor ‘[01m[Kvirtual rviz_mesh_tools_plugins::ClusterLabelVisual::[01;32m[K~ClusterLabelVisual[m[K()[m[K’:
+[01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/src/ClusterLabelVisual.cpp:183:21:[m[K [01;35m[Kwarning: [m[K‘[01m[Kbool Ogre::SharedPtr<T>::[01;32m[KisNull[m[K() const [35m[K[with T = Ogre::Mesh][m[K[m[K’ is deprecated [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+  183 |   if (![01;35m[Km_mesh.isNull()[m[K)
+      |        [01;35m[K~~~~~~~~~~~~~^~[m[K
+[01m[K/opt/ros/jazzy/opt/rviz_ogre_vendor/include/OGRE/OgreSharedPtr.h:91:30:[m[K [01;36m[Knote: [m[Kdeclared here
+   91 |         OGRE_DEPRECATED bool [01;36m[KisNull[m[K(void) const { return !shared_ptr<T>::operator bool(); }
+      |                              [01;36m[K^~~~~~[m[K
+[01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/src/ClusterLabelVisual.cpp:[m[K In member function ‘[01m[Kvoid rviz_mesh_tools_plugins::ClusterLabelVisual::[01;32m[Kreset[m[K()[m[K’:
+[01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/src/ClusterLabelVisual.cpp:208:24:[m[K [01;35m[Kwarning: [m[K‘[01m[Kbool Ogre::SharedPtr<T>::[01;32m[KisNull[m[K() const [35m[K[with T = Ogre::Material][m[K[m[K’ is deprecated [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+  208 |   if(![01;35m[Km_material.isNull()[m[K)
+      |       [01;35m[K~~~~~~~~~~~~~~~~~^~[m[K
+[01m[K/opt/ros/jazzy/opt/rviz_ogre_vendor/include/OGRE/OgreSharedPtr.h:91:30:[m[K [01;36m[Knote: [m[Kdeclared here
+   91 |         OGRE_DEPRECATED bool [01;36m[KisNull[m[K(void) const { return !shared_ptr<T>::operator bool(); }
+      |                              [01;36m[K^~~~~~[m[K
+[01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/src/ClusterLabelVisual.cpp:[m[K In member function ‘[01m[Kvoid rviz_mesh_tools_plugins::ClusterLabelVisual::[01;32m[KsetGeometry[m[K(std::shared_ptr<rviz_mesh_tools_plugins::Geometry>)[m[K’:
+[01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/src/ClusterLabelVisual.cpp:222:64:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kgeometry[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  222 | void ClusterLabelVisual::setGeometry([01;35m[Kstd::shared_ptr<Geometry> geometry[m[K)
+      |                                      [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+[01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/src/ClusterLabelVisual.cpp:[m[K In member function ‘[01m[Kvoid rviz_mesh_tools_plugins::ClusterLabelVisual::[01;32m[KsetFacesInCluster[m[K(const std::vector<unsigned int>&)[m[K’:
+[01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/src/ClusterLabelVisual.cpp:239:46:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid Ogre::SharedPtr<T>::[01;32m[KsetNull[m[K() [35m[K[with T = Ogre::HardwareIndexBuffer][m[K[m[K’ is deprecated [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+  239 |     [01;35m[Km_subMesh->indexData->indexBuffer.setNull()[m[K;
+      |     [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~[m[K
+[01m[K/opt/ros/jazzy/opt/rviz_ogre_vendor/include/OGRE/OgreSharedPtr.h:93:30:[m[K [01;36m[Knote: [m[Kdeclared here
+   93 |         OGRE_DEPRECATED void [01;36m[KsetNull[m[K() { shared_ptr<T>::reset(); }
+      |                              [01;36m[K^~~~~~~[m[K
+[01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/src/ClusterLabelVisual.cpp:266:21:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<unsigned int>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  266 |   for (int i = 0; [01;35m[Ki < faces.size()[m[K; i++)
+      |                   [01;35m[K~~^~~~~~~~~~~~~~[m[K
+[01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/src/ClusterLabelVisual.cpp:[m[K In member function ‘[01m[Kvoid rviz_mesh_tools_plugins::ClusterLabelVisual::[01;32m[KsetColor[m[K(Ogre::ColourValue, float)[m[K’:
+[01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/src/ClusterLabelVisual.cpp:285:25:[m[K [01;35m[Kwarning: [m[K‘[01m[Kbool Ogre::SharedPtr<T>::[01;32m[KisNull[m[K() const [35m[K[with T = Ogre::Material][m[K[m[K’ is deprecated [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+  285 |   if (![01;35m[Km_material.isNull()[m[K)
+      |        [01;35m[K~~~~~~~~~~~~~~~~~^~[m[K
+[01m[K/opt/ros/jazzy/opt/rviz_ogre_vendor/include/OGRE/OgreSharedPtr.h:91:30:[m[K [01;36m[Knote: [m[Kdeclared here
+   91 |         OGRE_DEPRECATED bool [01;36m[KisNull[m[K(void) const { return !shared_ptr<T>::operator bool(); }
+      |                              [01;36m[K^~~~~~[m[K
+[01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/src/MeshDisplay.cpp:[m[K In member function ‘[01m[Kvoid rviz_mesh_tools_plugins::MeshDisplay::[01;32m[KupdateBufferSize[m[K()[m[K’:
+[01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/src/MeshDisplay.cpp:623:27:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kstd::queue<std::shared_ptr<rviz_mesh_tools_plugins::MeshVisual> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  623 |   while ([01;35m[Km_visuals.size() > m_bufferSize->getInt()[m[K)
+      |          [01;35m[K~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/src/MeshDisplay.cpp:[m[K In member function ‘[01m[Kvoid rviz_mesh_tools_plugins::MeshDisplay::[01;32m[KrequestMaterials[m[K(std::string)[m[K’:
+[01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/src/MeshDisplay.cpp:1374:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<mesh_msgs::msg::MeshMaterial_<std::allocator<void> >, std::allocator<mesh_msgs::msg::MeshMaterial_<std::allocator<void> > > >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+ 1374 |     for (int i = 0; [01;35m[Ki < meshMaterialsStamped.mesh_materials.materials.size()[m[K; i++)
+      |                     [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/src/MeshDisplay.cpp:1380:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<mesh_msgs::msg::MeshFaceCluster_<std::allocator<void> >, std::allocator<mesh_msgs::msg::MeshFaceCluster_<std::allocator<void> > > >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+ 1380 |     for (int i = 0; [01;35m[Ki < meshMaterialsStamped.mesh_materials.clusters.size()[m[K; i++)
+      |                     [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/src/MeshDisplay.cpp:1385:43:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kmat[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+ 1385 |       const mesh_msgs::msg::MeshMaterial& [01;35m[Kmat[m[K = meshMaterialsStamped.mesh_materials.materials[materialIndex];
+      |                                           [01;35m[K^~~[m[K
+[01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/src/MeshDisplay.cpp:1356:32:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Ksrv[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+ 1356 |   mesh_msgs::srv::GetMaterials [01;35m[Ksrv[m[K;
+      |                                [01;35m[K^~~[m[K
+[01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/src/MeshDisplay.cpp:[m[K In member function ‘[01m[Kstd::shared_ptr<rviz_mesh_tools_plugins::MeshVisual> rviz_mesh_tools_plugins::MeshDisplay::[01;32m[KaddNewVisual[m[K()[m[K’:
+[01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/src/MeshDisplay.cpp:1482:24:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kstd::queue<std::shared_ptr<rviz_mesh_tools_plugins::MeshVisual> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+ 1482 |   if ([01;35m[Km_visuals.size() > bufferCapacity[m[K)
+      |       [01;35m[K~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins/include/rviz_mesh_tools_plugins/MeshPoseTool.hpp:48[m[K,
+                 from [01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/build/rviz_mesh_tools_plugins/rviz_mesh_tools_plugins_autogen/RHH6IMX7JG/../../../../mesh_tools/rviz_mesh_tools_plugins/include/rviz_mesh_tools_plugins/MeshGoalTool.hpp:48[m[K,
+                 from [01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/build/rviz_mesh_tools_plugins/rviz_mesh_tools_plugins_autogen/RHH6IMX7JG/moc_MeshGoalTool.cpp:10[m[K,
+                 from [01m[K/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/build/rviz_mesh_tools_plugins/rviz_mesh_tools_plugins_autogen/mocs_compilation.cpp:7[m[K:
+[01m[K/opt/ros/jazzy/opt/rviz_ogre_vendor/include/OGRE/OgreVector3.h:2:62:[m[K [01;36m[Knote: [m[K‘[01m[K#pragma message: /opt/ros/jazzy/opt/rviz_ogre_vendor/include/OGRE/OgreVector3.h is deprecated, migrate to Ogre.h[m[K’
+    2 | #pragma message( __FILE__ " is deprecated, migrate to Ogre.h"[01;36m[K)[m[K
+      |                                                              [01;36m[K^[m[K

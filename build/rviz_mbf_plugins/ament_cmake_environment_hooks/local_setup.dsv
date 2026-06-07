@@ -1,0 +1,3 @@
+source;share/rviz_mbf_plugins/environment/ament_prefix_path.sh
+source;share/rviz_mbf_plugins/environment/library_path.sh
+source;share/rviz_mbf_plugins/environment/path.sh

@@ -1,0 +1,68 @@
+# Parameters for point cloud conversion node
+# it converts a sensor_msgs/PointCloud2 to a rmcl_msgs/O1DnStamped
+# simple fitering can be achieved by skipping rows or cols
+rmcl_lidar3d_conversion:
+  ros__parameters:
+    use_sim_time: True
+    debug_cloud: True
+    model:
+      range_min: 0.3
+      range_max: 50.0
+    # filter / pre-processing:
+    width:
+      skip_begin: 0 # skip elements from begin  
+      skip_end:   0 # skip elements from end
+      increment:  1 # increment to skip data. Simple filter to reduce scan density
+    height:
+      skip_begin: 0 # cutting height from begin
+      skip_end:   0 # cutting height from end
+      increment:  1 # increment to skip data. Simple filter to reduce scan density 
+
+# Parameters for the MICP-L node
+rmcl_micpl:
+  ros__parameters:
+
+    # required frames
+    base_frame: base_footprint
+    map_frame: map
+    odom_frame: odom
+
+    # maximum number of correction steps per second
+    # lower this to decrease the correction speed but save energy 
+    correction_rate_max: 50.0
+    disable_correction: False
+    optimization_iterations: 10
+    tf_time_source: 1 # 0: measurement_latest, 1: correction_latest
+    tf_rate: 100.0
+    broadcast_tf: True
+    publish_pose: True
+    pose_noise: 0.01 # minimum noise of pose. can be set from sensor noise
+
+    # adjust max distance dependent of the state of localization
+    adaptive_max_dist: True # enable adaptive max dist
+
+    # initial offset applied to every incoming pose guess
+    pose_guess_offset: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0] # translation + euler angles (6) or translation + quaternion (7)
+
+    # very first initial pose guess
+    initial_pose_guess: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0] # translation + euler angles (6) or translation + quaternion (7)
+
+    # describe your sensor setup here
+    sensors: # list of range sensors - at least one is required
+      lidar3d:
+        data_source: topic
+        model_type: o1dn
+        topic_name: /rmcl_inputs/cloud
+        correspondences:
+          backend: embree
+          type: RC
+          metric: P2L
+          adaptive_max_dist_min: 0.03
+          max_dist: 0.3
+          visualize: True
+
+rmcl_seg:
+  ros__parameters:
+    map_frame: map
+    min_dist_outlier_scan: 0.15
+    min_dist_outlier_map: 0.15

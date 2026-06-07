@@ -1,0 +1,3 @@
+source;share/cvp_mesh_planner/environment/ament_prefix_path.sh
+source;share/cvp_mesh_planner/environment/library_path.sh
+source;share/cvp_mesh_planner/environment/path.sh

@@ -1,0 +1,97 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Release-eb0dc856933cd3881b7e.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "rviz_mesh_tools_plugins",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "rviz_mesh_tools_plugins::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-rviz_mesh_tools_plugins-Release-e837f5c85e290ce46971.json",
+					"name" : "rviz_mesh_tools_plugins",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "rviz_mesh_tools_plugins_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-rviz_mesh_tools_plugins_autogen-Release-db252898a95bb80039cc.json",
+					"name" : "rviz_mesh_tools_plugins_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "rviz_mesh_tools_plugins_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-rviz_mesh_tools_plugins_autogen_timestamp_deps-Release-5202c6c00c203183bcf8.json",
+					"name" : "rviz_mesh_tools_plugins_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "rviz_mesh_tools_plugins_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-rviz_mesh_tools_plugins_uninstall-Release-3818043597b506d05609.json",
+					"name" : "rviz_mesh_tools_plugins_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-Release-7e64f9a8f4fc10237096.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/build/rviz_mesh_tools_plugins",
+		"source" : "/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_tools/rviz_mesh_tools_plugins"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

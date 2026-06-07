@@ -1,0 +1,91 @@
+-- Found ament_cmake: 2.5.5 (/opt/ros/jazzy/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+-- Found rclcpp: 28.1.16 (/opt/ros/jazzy/share/rclcpp/cmake)
+-- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+-- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+-- Found rmw_cyclonedds_cpp: 2.2.3 (/opt/ros/jazzy/share/rmw_cyclonedds_cpp/cmake)
+-- Using RMW implementation 'rmw_cyclonedds_cpp' as default
+-- Found rclcpp_components: 28.1.16 (/opt/ros/jazzy/share/rclcpp_components/cmake)
+-- Found geometry_msgs: 5.3.6 (/opt/ros/jazzy/share/geometry_msgs/cmake)
+-- Found tf2_ros: 0.36.19 (/opt/ros/jazzy/share/tf2_ros/cmake)
+-- Found tf2_eigen: 0.36.19 (/opt/ros/jazzy/share/tf2_eigen/cmake)
+-- Found tf2_geometry_msgs: 0.36.19 (/opt/ros/jazzy/share/tf2_geometry_msgs/cmake)
+-- Found eigen3_cmake_module: 0.3.0 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)
+-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+-- Found ament_lint_auto: 0.17.4 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+-- Added test 'copyright' to check source files copyright and LICENSE
+-- Added test 'cppcheck' to perform static code analysis on C / C++ code
+-- Configured cppcheck include dirs: $<BUILD_INTERFACE:/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/mesh_navigation_tutorials_sim/include>
+-- Configured cppcheck exclude dirs and/or files: 
+-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+-- Added test 'uncrustify' to check C / C++ code style
+-- Configured uncrustify additional arguments: 
+-- Configuring done (0.9s)
+-- Generating done (0.1s)
+-- Build files have been written to: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/build/mesh_navigation_tutorials_sim
+[ 50%] [32mBuilding CXX object CMakeFiles/ground_truth_localization_node.dir/rclcpp_components/node_main_ground_truth_localization_node.cpp.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/ground_truth_localization.dir/src/ground_truth_localization.cpp.o[0m
+[ 75%] [32m[1mLinking CXX executable ground_truth_localization_node[0m
+[ 75%] Built target ground_truth_localization_node
+[100%] [32m[1mLinking CXX shared library libground_truth_localization.so[0m
+[100%] Built target ground_truth_localization
+-- Install configuration: "Release"
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/environment/mesh_navigation_tutorials_sim.dsv
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/environment/mesh_navigation_tutorials_sim.sh
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/config
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/config/ros_gazebo_bridge.yaml
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/launch
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/launch/base_simulation_launch.py
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/launch/simulation_launch.py
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/models
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/models/floor_is_lava
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/models/floor_is_lava/meshes
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/models/floor_is_lava/meshes/floor_is_lava.dae
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/models/floor_is_lava/meshes/floor_is_lava.ply
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/models/floor_is_lava/model.config
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/models/floor_is_lava/model.sdf
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/models/parking_garage
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/models/parking_garage/meshes
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/models/parking_garage/meshes/parking_garage.dae
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/models/parking_garage/meshes/parking_garage_flipped.dae
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/models/parking_garage/model.config
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/models/parking_garage/model.sdf
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/models/tray
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/models/tray/meshes
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/models/tray/meshes/tray.dae
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/models/tray/meshes/tray.ply
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/models/tray/model.config
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/models/tray/model.sdf
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/worlds
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/worlds/floor_is_lava.sdf
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/worlds/parking_garage.sdf
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/worlds/tray.sdf
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/meshes
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/meshes/wheel.stl
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/urdf
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/urdf/ceres.urdf.xacro
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/urdf/common.urdf.xacro
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/urdf/wheel.urdf.xacro
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/lib/mesh_navigation_tutorials_sim/ground_truth_localization_node
+-- Set non-toolchain portion of runtime path of "/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/lib/mesh_navigation_tutorials_sim/ground_truth_localization_node" to ""
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/lib/libground_truth_localization.so
+-- Set non-toolchain portion of runtime path of "/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/lib/libground_truth_localization.so" to ""
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/ament_index/resource_index/package_run_dependencies/mesh_navigation_tutorials_sim
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/ament_index/resource_index/parent_prefix_path/mesh_navigation_tutorials_sim
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/environment/ament_prefix_path.sh
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/environment/ament_prefix_path.dsv
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/environment/path.sh
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/environment/path.dsv
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/local_setup.bash
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/local_setup.sh
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/local_setup.zsh
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/local_setup.dsv
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/package.dsv
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/ament_index/resource_index/packages/mesh_navigation_tutorials_sim
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/ament_index/resource_index/rclcpp_components/mesh_navigation_tutorials_sim
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/cmake/mesh_navigation_tutorials_simConfig.cmake
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/cmake/mesh_navigation_tutorials_simConfig-version.cmake
+-- Installing: /home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/install/mesh_navigation_tutorials_sim/share/mesh_navigation_tutorials_sim/package.xml

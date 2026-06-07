@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>mesh_msgs</name>
+  <version>2.1.1</version>
+  <description>Various Message Types for Mesh Data.</description>
+
+  <maintainer email="alexander.mock@naturerobots.com">Alexander Mock</maintainer>
+  <license>BSD-3-Clause</license>
+
+  <url>http://github.com/naturerobots/mesh_tools</url>
+  <author email="spuetz@uos.de">Sebastian Pütz</author>
+  <author email="hdeeken@uos.de">Henning Deeken</author>
+  <author email="jvogtherr@uos.de">Jan Philipp Vogtherr</author>
+  <author email="rdiederichse@uos.de">Rasmus Diederichsen</author>
+  <author email="cswan@uos.de">Christian Swan</author>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>rosidl_default_generators</buildtool_depend>
+
+  <depend>geometry_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+
+  <exec_depend>rosidl_default_runtime</exec_depend>
+  <member_of_group>rosidl_interface_packages</member_of_group>
+
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

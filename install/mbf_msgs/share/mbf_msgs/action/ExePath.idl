@@ -1,0 +1,109 @@
+// generated from rosidl_adapter/resource/action.idl.em
+// with input from mbf_msgs/action/ExePath.action
+// generated code does not contain a copyright notice
+
+#include "geometry_msgs/msg/PoseStamped.idl"
+#include "geometry_msgs/msg/TwistStamped.idl"
+#include "nav_msgs/msg/Path.idl"
+
+module mbf_msgs {
+  module action {
+    @verbatim (language="comment", text=
+      "Follow the given path until completion or failure")
+    struct ExePath_Goal {
+      nav_msgs::msg::Path path;
+
+      @verbatim (language="comment", text=
+        "Controller to use; defaults to the first one specified on \"controllers\" parameter")
+      string controller;
+
+      @verbatim (language="comment", text=
+        "use different slots for concurrency")
+      uint8 concurrency_slot;
+
+      @verbatim (language="comment", text=
+        "define goal tolerance for the action")
+      boolean tolerance_from_action;
+
+      float dist_tolerance;
+
+      float angle_tolerance;
+    };
+    module ExePath_Result_Constants {
+      @verbatim (language="comment", text=
+        "Predefined success codes:")
+      const uint8 SUCCESS = 0;
+      @verbatim (language="comment", text=
+        "1..9 are reserved as plugin specific non-error results" "\n"        "Predefined error codes:" "\n"        "Unspecified failure, only used for old, non-mfb_core based plugins")
+      const uint8 FAILURE = 100;
+      const uint8 CANCELED = 101;
+      const uint8 NO_VALID_CMD = 102;
+      const uint8 PAT_EXCEEDED = 103;
+      const uint8 COLLISION = 104;
+      const uint8 OSCILLATION = 105;
+      @verbatim (language="comment", text=
+        "The robot is not obeying the commanded velocity")
+      const uint8 ROBOT_STUCK = 106;
+      @verbatim (language="comment", text=
+        "The robot has overshot the goal and cannot reach it anymore")
+      const uint8 MISSED_GOAL = 107;
+      @verbatim (language="comment", text=
+        "The robot has diverged from the path and cannot rejoin it")
+      const uint8 MISSED_PATH = 108;
+      @verbatim (language="comment", text=
+        "There's an obstacle at the goal")
+      const uint8 BLOCKED_GOAL = 109;
+      @verbatim (language="comment", text=
+        "There's an obstacle on the path")
+      const uint8 BLOCKED_PATH = 110;
+      const uint8 INVALID_PATH = 111;
+      const uint8 TF_ERROR = 112;
+      const uint8 NOT_INITIALIZED = 113;
+      const uint8 INVALID_PLUGIN = 114;
+      const uint8 INTERNAL_ERROR = 115;
+      @verbatim (language="comment", text=
+        "The start and / or the goal are outside the map")
+      const uint8 OUT_OF_MAP = 116;
+      @verbatim (language="comment", text=
+        "The map is not available or not running properly")
+      const uint8 MAP_ERROR = 117;
+      @verbatim (language="comment", text=
+        "The controller execution has been stopped rigorously")
+      const uint8 STOPPED = 118;
+      const uint8 ERROR_RANGE_START = 100;
+      const uint8 ERROR_RANGE_END = 149;
+      @verbatim (language="comment", text=
+        "121..149 are reserved as plugin specific errors:")
+      const uint8 PLUGIN_ERROR_RANGE_START = 121;
+      const uint8 PLUGIN_ERROR_RANGE_END = 149;
+    };
+    struct ExePath_Result {
+      uint32 outcome;
+
+      string message;
+
+      geometry_msgs::msg::PoseStamped final_pose;
+
+      float dist_to_goal;
+
+      float angle_to_goal;
+    };
+    struct ExePath_Feedback {
+      @verbatim (language="comment", text=
+        "Outcome of most recent controller cycle. Same values as in result")
+      uint32 outcome;
+
+      string message;
+
+      float dist_to_goal;
+
+      float angle_to_goal;
+
+      geometry_msgs::msg::PoseStamped current_pose;
+
+      @verbatim (language="comment", text=
+        "last command calculated by the controller")
+      geometry_msgs::msg::TwistStamped last_cmd_vel;
+    };
+  };
+};

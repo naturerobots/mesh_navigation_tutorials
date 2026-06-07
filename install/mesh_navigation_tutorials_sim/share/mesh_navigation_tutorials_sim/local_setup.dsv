@@ -1,0 +1,4 @@
+source;share/mesh_navigation_tutorials_sim/environment/ament_prefix_path.sh
+source;share/mesh_navigation_tutorials_sim/environment/mesh_navigation_tutorials_sim.sh
+source;share/mesh_navigation_tutorials_sim/environment/path.sh
+source;share/mesh_navigation_tutorials_sim/environment/mesh_navigation_tutorials_sim.dsv

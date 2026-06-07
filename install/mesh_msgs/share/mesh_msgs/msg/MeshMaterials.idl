@@ -1,0 +1,23 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from mesh_msgs/msg/MeshMaterials.msg
+// generated code does not contain a copyright notice
+
+#include "mesh_msgs/msg/MeshFaceCluster.idl"
+#include "mesh_msgs/msg/MeshMaterial.idl"
+#include "mesh_msgs/msg/MeshVertexTexCoords.idl"
+
+module mesh_msgs {
+  module msg {
+    @verbatim (language="comment", text=
+      "Mesh Attribute Message")
+    struct MeshMaterials {
+      sequence<mesh_msgs::msg::MeshFaceCluster> clusters;
+
+      sequence<mesh_msgs::msg::MeshMaterial> materials;
+
+      sequence<uint32> cluster_materials;
+
+      sequence<mesh_msgs::msg::MeshVertexTexCoords> vertex_tex_coords;
+    };
+  };
+};

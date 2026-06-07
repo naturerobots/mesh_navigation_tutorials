@@ -1,0 +1,8 @@
+source;share/mbf_abstract_core/hook/cmake_prefix_path.ps1
+source;share/mbf_abstract_core/hook/cmake_prefix_path.dsv
+source;share/mbf_abstract_core/hook/cmake_prefix_path.sh
+source;share/mbf_abstract_core/local_setup.bash
+source;share/mbf_abstract_core/local_setup.dsv
+source;share/mbf_abstract_core/local_setup.ps1
+source;share/mbf_abstract_core/local_setup.sh
+source;share/mbf_abstract_core/local_setup.zsh

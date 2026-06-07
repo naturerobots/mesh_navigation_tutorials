@@ -1,0 +1,14 @@
+{
+  "package_name": "mbf_msgs",
+  "non_idl_tuples": [
+    "/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/move_base_flex/mbf_msgs:action/ExePath.action",
+    "/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/move_base_flex/mbf_msgs:action/GetPath.action",
+    "/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/move_base_flex/mbf_msgs:action/MoveBase.action",
+    "/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/move_base_flex/mbf_msgs:action/Recovery.action",
+    "/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/move_base_flex/mbf_msgs:srv/CheckPath.srv",
+    "/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/move_base_flex/mbf_msgs:srv/CheckPoint.srv",
+    "/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/move_base_flex/mbf_msgs:srv/CheckPose.srv",
+    "/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/move_base_flex/mbf_msgs:srv/FindValidPose.srv",
+    "/home/haris/SharedDrive/Harris/Desktop/ros2_workspaces/naturerobots/mesh_navigation_tutorials/move_base_flex/mbf_msgs:srv/SetTestRobotState.srv"
+  ]
+}

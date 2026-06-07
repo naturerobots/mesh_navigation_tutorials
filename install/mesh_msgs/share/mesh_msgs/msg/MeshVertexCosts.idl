@@ -1,0 +1,14 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from mesh_msgs/msg/MeshVertexCosts.msg
+// generated code does not contain a copyright notice
+
+
+module mesh_msgs {
+  module msg {
+    @verbatim (language="comment", text=
+      "Mesh Attribute Message")
+    struct MeshVertexCosts {
+      sequence<float> costs;
+    };
+  };
+};

@@ -1,0 +1,31 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from mbf_msgs/srv/SetTestRobotState.srv
+// generated code does not contain a copyright notice
+
+#include "geometry_msgs/msg/TransformStamped.idl"
+#include "geometry_msgs/msg/TwistStamped.idl"
+
+module mbf_msgs {
+  module srv {
+    @verbatim (language="comment", text=
+      "Only used for testing (via mbf_test_utility)")
+    struct SetTestRobotState_Request {
+      @verbatim (language="comment", text=
+        "Set the transform that defines where the robot is located to this")
+      geometry_msgs::msg::TransformStamped transform;
+
+      @verbatim (language="comment", text=
+        "Whether to also set the robot's velocity")
+      boolean set_velocity;
+
+      @verbatim (language="comment", text=
+        "Only used when set_velocity is true; Velocity needs to be given in the robot's reference frame (e.g. \"base_link\")")
+      geometry_msgs::msg::TwistStamped velocity_robot;
+    };
+    struct SetTestRobotState_Response {
+      @verbatim (language="comment", text=
+        "whether the robot's pose and velocity has been set")
+      boolean success;
+    };
+  };
+};
