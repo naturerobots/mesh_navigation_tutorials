@@ -45,6 +45,7 @@ move_base_flex:
         - border
         - height_diff
         - roughness
+        - steepness
         - static_combination
         - static_inflation
         - obstacle
@@ -58,6 +59,7 @@ move_base_flex:
         type: 'mesh_layers/HeightDiffLayer'
         combination_weight: 1.0
         threshold: 0.2
+        radius: 0.4
 
       border:
         type: 'mesh_layers/BorderLayer'
@@ -70,6 +72,11 @@ move_base_flex:
         combination_weight: 1.0
         threshold: 0.8
 
+      steepness:
+        type: 'mesh_layers/SteepnessLayer'
+        combination_weight: 1.0
+        threshold: 0.5235988 # 30 degrees converted to radian
+
       static_combination:
         # This layer combines the three input layers by linearly combining vertex costs:
         # -> vertex_cost = layer1.combination_weight * layer1.vertex_cost + layer2.combination_weight * layer2.vertex_cost + ...
@@ -77,7 +84,7 @@ move_base_flex:
         type: 'mesh_layers/AvgCombinationLayer'
         # The `inputs` parameter determines which layers are processed by this layer.
         # If a layer does not process inputs, this parameter can be omitted
-        inputs: ['height_diff', 'border', 'roughness']
+        inputs: ['border', 'roughness', 'steepness']
 
       static_inflation:
         type: 'mesh_layers/InflationLayer'
@@ -85,7 +92,7 @@ move_base_flex:
         combination_weight: 1.0
         inflation_radius: 1.5 # outer ring
         inscribed_radius: 0.4 # inner ring
-        lethal_value: .inf
+        lethal_value: 1.0
         inscribed_value: 1.0
         repulsive_field: false
         cost_scaling_factor: 2.0
@@ -103,14 +110,16 @@ move_base_flex:
         combination_weight: 1.0
         inflation_radius: 1.5 # outer ring
         inscribed_radius: 0.4 # inner ring
-        lethal_value: .inf
+        lethal_value: 1.0
         inscribed_value: 1.0
         repulsive_field: false
         cost_scaling_factor: 2.0
 
       final:
         type: 'mesh_layers/MaxCombinationLayer'
-        inputs: ['static_inflation', 'obstacle_inflation']
+        # The height diff layer itself always considers a radius as lethal. If the height diff layer radius
+        # is equivalent to the inflation layers inscribed radius we do not need to inflate it further.
+        inputs: ['static_inflation', 'obstacle_inflation', 'height_diff']
 
       # An edge cost equals the total costs that are collected along a 
       # triangle's edge by linearly interpolating the combined vertex costs
